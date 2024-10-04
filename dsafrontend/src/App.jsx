@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
 import Sidebar from "./sidebar/sidebar";
+import Contentarea from "./contentarea/Contentarea";
 
 function App() {
   // const [products, setProducts] = useState([]);
@@ -16,10 +17,11 @@ function App() {
   //       console.log(error);
   //     });
   // }, []);
-
+  const [navigate, navigateTo] = useState("dashboard");
   return (
     <div className="flex">
-      <Sidebar />
+      <Sidebar navigateTo={navigateTo} />
+      <Contentarea navigate={navigate} />
     </div>
   );
 }
