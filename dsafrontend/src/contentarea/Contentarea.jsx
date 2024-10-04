@@ -2,7 +2,7 @@ import Dashboard from "../dashboard/Dashboard";
 import Products from "../products/Products";
 
 export default function Contentarea({ navigate }) {
-  const renderContent = () => {
+  function renderContent() {
     switch (navigate) {
       case "Dashboard":
         return <Dashboard />;
@@ -11,10 +11,9 @@ export default function Contentarea({ navigate }) {
       default:
         return <Dashboard />;
     }
-  };
+  }
   return (
-    <div className="bg-red-200">
-      <h1>Hello!</h1>
+    <div className="w-full mt-4 mr-8">
       <div>{renderContent()}</div>
     </div>
   );

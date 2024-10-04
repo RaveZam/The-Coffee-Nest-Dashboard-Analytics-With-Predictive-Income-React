@@ -5,7 +5,7 @@ import { FaPeopleGroup } from "react-icons/fa6";
 
 export default function Sidebar({ navigateTo }) {
   return (
-    <div className="w-1/5 pl-12 pt-12">
+    <div className="w-1/3 pl-12 pt-12 mr-2">
       <ul className="space-y-4 cursor-pointer w-full">
         <li
           onClick={() => navigateTo("Dashboard")}
@@ -22,7 +22,7 @@ export default function Sidebar({ navigateTo }) {
           Products
         </li>
         <li
-          onClick={() => navigateTo("Income")}
+          onClick={() => navigateTo("Products")}
           className="flex p-4 hover:bg-gray-200 transition duration-300 rounded-lg"
         >
           <MdOutlineAttachMoney className="scale-150 mr-4" />
