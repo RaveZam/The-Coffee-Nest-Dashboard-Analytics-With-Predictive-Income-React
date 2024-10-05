@@ -5,7 +5,7 @@ import Sidebar from "./sidebar/sidebar";
 import Contentarea from "./contentarea/Contentarea";
 
 function App() {
-  // const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([]);
   // const url = "http://localhost:8000/api/products";
   // useEffect(() => {
   //   axios

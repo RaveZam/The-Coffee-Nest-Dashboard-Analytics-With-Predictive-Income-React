@@ -1,7 +1,6 @@
 To Do List:
 
 Finalize Databse Structure
-
 code the frontend where to display the data
 
 make mockup data for the database atleast 10 minmum spread out.

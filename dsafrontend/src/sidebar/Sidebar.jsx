@@ -5,7 +5,7 @@ import { FaPeopleGroup } from "react-icons/fa6";
 
 export default function Sidebar({ navigateTo }) {
   return (
-    <div className="w-1/3 pl-12 pt-12 mr-2">
+    <div className="w-1/4 pl-12 pt-12 mr-12">
       <ul className="space-y-4 cursor-pointer w-full">
         <li
           onClick={() => navigateTo("Dashboard")}
