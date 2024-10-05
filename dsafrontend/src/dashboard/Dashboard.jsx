@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function Dashboard() {
-  const netSales = 1200;
-  const grossSales = 1600;
   const url = "http://localhost:8000/api/sales";
   const [salesTable, setsalesTable] = useState([]);
+  const [itemsSold, setItemsSold] = useState(0);
+  const [netsales, setNetSales] = useState(0);
   useEffect(() => {
     axios
       .get(url)
@@ -16,8 +16,23 @@ export default function Dashboard() {
         console.log(error);
       });
   }, []);
+  // On Effect Load All Dynamic Variables
+  useEffect(() => {
+    salesTable.forEach((sale) => {
+      let counter = 0;
+      counter += sale.total_price;
+    });
+  }, []);
 
-  function countQuantity() {}
+  const netSales = 1200;
+  const grossSales = 1600;
+  function countQuantity() {
+    let counter = 0;
+    salesTable.forEach((sale) => {
+      counter += sale.quantity;
+      setItemsSold(counter);
+    });
+  }
   return (
     <div>
       <h1 className="text-[2.5vw] font-bold">Dashboard</h1>
@@ -34,10 +49,7 @@ export default function Dashboard() {
         </div>
       </div>
       <div>random dump area for testing:</div>
-
-      <button onClick={() => console.log(salesTable[5].product.product_name)}>
-        Log Table
-      </button>
+      <button onClick={() => countQuantity()}>Log Table</button>
     </div>
   );
 }
