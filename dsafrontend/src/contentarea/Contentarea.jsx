@@ -4,17 +4,21 @@ import Products from "../products/Products";
 import BouncingCircles from "../preloaders/BouncingCircles";
 
 export default function Contentarea({ navigate }) {
-  const [isloading, setIsLoading] = useState(true);
-  const [opacity, setOpacity] = useState(1);
-  const [componentopacity, setcomponentOpacity] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
+  const [preloaderOpacity, setPreloaderOpacity] = useState(1);
+  const [contentOpacity, setContentOpacity] = useState(0);
+
   useEffect(() => {
     setTimeout(() => {
-      setOpacity(0);
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 1000);
-    }, 800);
+      setPreloaderOpacity(0);
+    }, 1000);
+
+    setTimeout(() => {
+      setIsLoading(false);
+      setContentOpacity(1);
+    }, 2000);
   }, []);
+
   function renderContent() {
     switch (navigate) {
       case "Dashboard":
@@ -25,13 +29,14 @@ export default function Contentarea({ navigate }) {
         return <Dashboard />;
     }
   }
+
   return (
     <div className="w-full mt-4 mr-8 z-10">
-      {isloading ? (
+      {isLoading ? (
         <div
           style={{
-            opacity: opacity,
-            transition: "all 0.2s ease-in-out",
+            opacity: preloaderOpacity,
+            transition: "opacity 0.4s ease-out",
           }}
         >
           <BouncingCircles />
@@ -39,8 +44,8 @@ export default function Contentarea({ navigate }) {
       ) : (
         <div
           style={{
-            opacity: componentopacity,
-            transition: "all 0.2s ease-in-out",
+            opacity: contentOpacity,
+            transition: "opacity 0.4s ease-in-out",
           }}
         >
           {renderContent()}
