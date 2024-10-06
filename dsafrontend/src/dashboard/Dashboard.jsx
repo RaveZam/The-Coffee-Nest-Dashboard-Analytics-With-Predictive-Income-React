@@ -22,7 +22,18 @@ export default function Dashboard() {
       });
   }, []);
 
-  // On Effect Load All Dynamic Variables
+  const [sortedCategory, setSortedCategory] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/countedcategory")
+      .then((response) => {
+        setSortedCategory(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+  // total price counter
   useEffect(() => {
     let grossCounter = 0;
     salesTable.forEach((sale) => {

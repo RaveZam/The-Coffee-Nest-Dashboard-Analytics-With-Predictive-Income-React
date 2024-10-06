@@ -9,9 +9,10 @@ import {
 
 export default function LineGraph({ resultArray }) {
   return (
-    <div className="ml-4">
-      <h1 className="mb-4 font-bold text-[1.5vw]">Sales Over Time</h1>
+    <div>
+      <h1 className="mb-4 text-[1.5vw] font-bold">Sales Over Time</h1>
       <LineChart
+        className="ml-8"
         width={1100}
         height={500}
         data={resultArray}
