@@ -21,8 +21,8 @@ export default function Dashboard() {
         console.log(error);
       });
   }, []);
-  // On Effect Load All Dynamic Variables
 
+  // On Effect Load All Dynamic Variables
   useEffect(() => {
     let grossCounter = 0;
     salesTable.forEach((sale) => {
