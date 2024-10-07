@@ -41,7 +41,7 @@ export default function EstimatedIncome() {
           onClick={() => console.log(filledSalesHistory)}
           className="ml-4 rounded-lg border-2 p-2 duration-300 hover:bg-gray-100"
         >
-          Log Array
+          Log Array im tired ill do this tommorow
         </button>
       </div>
     </div>
