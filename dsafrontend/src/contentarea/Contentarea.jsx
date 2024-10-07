@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Dashboard from "../dashboard/Dashboard";
 import Products from "../products/Products";
 import BouncingCircles from "../preloaders/BouncingCircles";
+import EstimatedIncome from "../Estimated Income/EstimatedIncome";
 
 export default function Contentarea({ navigate }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -25,13 +26,15 @@ export default function Contentarea({ navigate }) {
         return <Dashboard />;
       case "Products":
         return <Products />;
+      case "EstimatedIncome":
+        return <EstimatedIncome />;
       default:
         return <Dashboard />;
     }
   }
 
   return (
-    <div className="w-full mt-4 mr-8 z-10">
+    <div className="z-10 mr-8 mt-4 w-full">
       {isLoading ? (
         <div
           style={{

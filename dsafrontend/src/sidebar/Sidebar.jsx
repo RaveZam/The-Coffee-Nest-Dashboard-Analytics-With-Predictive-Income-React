@@ -5,31 +5,31 @@ import { FaPeopleGroup } from "react-icons/fa6";
 
 export default function Sidebar({ navigateTo }) {
   return (
-    <div className="w-1/4 p-12 pr-12 whitespace-nowrap">
-      <ul className="space-y-4 cursor-pointer w-full">
+    <div className="w-1/4 whitespace-nowrap p-12 pr-12">
+      <ul className="w-full cursor-pointer space-y-4">
         <li
           onClick={() => navigateTo("Dashboard")}
-          className="flex  p-4 hover:bg-gray-200 transition duration-300 rounded-lg pr-12 "
+          className="flex rounded-lg p-4 pr-12 transition duration-300 hover:bg-gray-200"
         >
-          <FaHome className="scale-150 mr-4 translate-y-1" />
+          <FaHome className="mr-4 translate-y-1 scale-150" />
           Dashboard
         </li>
         <li
           onClick={() => navigateTo("Products")}
-          className="flex p-4 hover:bg-gray-200 transition duration-300 rounded-lg pr-8"
+          className="flex rounded-lg p-4 pr-8 transition duration-300 hover:bg-gray-200"
         >
-          <BsBox className="scale-150 mr-4 translate-y-1" />
+          <BsBox className="mr-4 translate-y-1 scale-150" />
           Products
         </li>
         <li
-          onClick={() => navigateTo("Products")}
-          className="flex p-4 hover:bg-gray-200 transition duration-300 rounded-lg pr-8"
+          onClick={() => navigateTo("EstimatedIncome")}
+          className="flex rounded-lg p-4 pr-8 transition duration-300 hover:bg-gray-200"
         >
-          <MdOutlineAttachMoney className="scale-150 mr-4 translate-y-1" />
+          <MdOutlineAttachMoney className="mr-4 translate-y-1 scale-150" />
           Estimated Incomes
         </li>
-        <li className="flex p-4 hover:bg-gray-200 transition duration-300 rounded-lg pr-8">
-          <FaPeopleGroup className="scale-150 mr-4 translate-y-1" />
+        <li className="flex rounded-lg p-4 pr-8 transition duration-300 hover:bg-gray-200">
+          <FaPeopleGroup className="mr-4 translate-y-1 scale-150" />
           Customers
         </li>
       </ul>
