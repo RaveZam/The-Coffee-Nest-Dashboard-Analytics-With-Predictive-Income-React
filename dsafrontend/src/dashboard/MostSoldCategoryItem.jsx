@@ -70,9 +70,6 @@ export default function MostSoldCategoryItem() {
           </h1>
         </div>
       </div>
-      {/* {console.log(categoryTotal) &
-        console.log(sortedCategory[2].category_count)} */}
-      {console.log(sortedCategory)}
     </div>
   );
 }
