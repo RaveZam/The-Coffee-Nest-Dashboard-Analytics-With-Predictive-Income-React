@@ -63,12 +63,12 @@ export default function Dashboard() {
   const resultArray = Object.values(salesByDate);
 
   return (
-    <>
+    <div>
       <TotalSales grosssales={grosssales} itemsSold={itemsSold} />
       <LineGraph resultArray={resultArray} />
       <MostSoldItem />
       <MostSoldCategoryItem />
-    </>
+    </div>
   );
 }
 

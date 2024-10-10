@@ -33,7 +33,7 @@ export default function MostSoldCategoryItem() {
         Sales percentage by Category
       </h1>
       <div className="mt-4 flex gap-x-4">
-        <div className="w-1/2 rounded-lg border-2 border-gray-300 p-4 pl-12 text-left">
+        <div className="w-1/2 rounded-lg border-2 border-gray-300 bg-white p-4 pl-12 text-left drop-shadow-xl">
           <h3>{sortedCategory[0].category}</h3>
           <h1 className="text-[1.4vw] font-extrabold">
             {((sortedCategory[0].category_count / categoryTotal) * 100).toFixed(
@@ -42,7 +42,7 @@ export default function MostSoldCategoryItem() {
             %
           </h1>
         </div>
-        <div className="w-1/2 rounded-lg border-2 border-gray-300 p-4 pl-12 text-left">
+        <div className="w-1/2 rounded-lg border-2 border-gray-300 bg-white p-4 pl-12 text-left drop-shadow-xl">
           <h3> {sortedCategory[1].category} </h3>
           <h1 className="text-[1.4vw] font-extrabold">
             {((sortedCategory[1].category_count / categoryTotal) * 100).toFixed(
@@ -51,7 +51,7 @@ export default function MostSoldCategoryItem() {
             %
           </h1>
         </div>
-        <div className="w-1/2 rounded-lg border-2 border-gray-300 p-4 pl-12 text-left">
+        <div className="w-1/2 rounded-lg border-2 border-gray-300 bg-white p-4 pl-12 text-left drop-shadow-xl">
           <h3> {sortedCategory[2].category} </h3>{" "}
           <h1 className="text-[1.4vw] font-extrabold">
             {((sortedCategory[2].category_count / categoryTotal) * 100).toFixed(
@@ -60,7 +60,7 @@ export default function MostSoldCategoryItem() {
             %
           </h1>
         </div>
-        <div className="w-1/2 rounded-lg border-2 border-gray-300 p-4 pl-12 text-left">
+        <div className="w-1/2 rounded-lg border-2 border-gray-300 bg-white p-4 pl-12 text-left drop-shadow-xl">
           <h3> {sortedCategory[3].category}</h3>
           <h1 className="text-[1.4vw] font-extrabold">
             {((sortedCategory[3].category_count / categoryTotal) * 100).toFixed(

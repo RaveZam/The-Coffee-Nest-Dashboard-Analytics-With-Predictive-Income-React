@@ -15,10 +15,10 @@ export default function MostSoldItem() {
   return (
     <div className="mt-12">
       <h1 className="text-[1.5vw] font-bold">Top Products</h1>
-      <div className="mt-4 flex-col rounded-lg border-2 border-gray-400">
+      <div className="mt-4 flex-col rounded-lg border-2 border-gray-400 bg-white drop-shadow-xl">
         <div className="flex w-full flex-1 border-b-2 border-b-gray-400 py-4">
           <h1 className="flex-1 pl-16 font-bold">Product</h1>
-          <h1 className="flex-1 pl-8 font-bold">Quantity</h1>
+          <h1 className="flex-1 pl-4 font-bold">Quantity Sold</h1>
           <h1 className="flex-1 font-bold">Price</h1>
           <h1 className="flex-1 font-bold">Category</h1>
         </div>
