@@ -10,7 +10,9 @@ import {
 export default function LineGraph({ resultArray }) {
   return (
     <div className="mt-8">
-      <h1 className="mb-2 text-[1.1vw] font-bold">Sales In The Past 28 Days</h1>
+      <h1 className="mb-2 text-[1.1vw] font-bold">
+        Items Sold In The Past 28 Days
+      </h1>
       <LineChart
         width={1100}
         height={400}
