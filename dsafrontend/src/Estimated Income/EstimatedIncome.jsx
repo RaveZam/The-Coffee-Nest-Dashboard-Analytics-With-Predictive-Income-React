@@ -8,6 +8,7 @@ import LineGraph from "../dashboard/LineGraph";
 import WeeklyIncome from "./WeeklyIncome";
 import WeeklyBarChart from "./WeeklyBarChart";
 import PredictiveIncome from "./PredictiveIncome";
+import AverageSalesPerWeek from "./AverageSalesPerWeek";
 
 export default function EstimatedIncome() {
   const [salesPerDay, setsalesPerDay] = useState([]);
@@ -22,18 +23,6 @@ export default function EstimatedIncome() {
       .get("http://localhost:8000/api/totalpriceperday")
       .then((response) => {
         setsalesPerDay(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
-  const [salesTable, setsalesTable] = useState([]);
-  useEffect(() => {
-    axios
-      .get("http://localhost:8000/api/sales")
-      .then((response) => {
-        setsalesTable(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -68,20 +57,13 @@ export default function EstimatedIncome() {
       <WeeklyIncome salesPerWeek={salesPerWeek} />
       <div className="mt-4 flex gap-4">
         <WeeklyBarChart salesPerWeek={salesPerWeek} />
-        <PredictiveIncome className="flex-grow" />
+        <div className="w-full">
+          <PredictiveIncome className="flex-grow" />
+          <AverageSalesPerWeek />
+        </div>
       </div>
     </div>
   );
-}
-
-{
-  /* <div className="h-120 m-4 flex flex-col rounded-lg p-4">
-          <h1>Data:</h1>
-          <h2>Week 1 Total Sales: {salesPerWeek[0]} PHP </h2>
-          <h2>Week 2 Total Sales: {salesPerWeek[1]} PHP </h2>
-          <h2>Week 3 Total Sales: {salesPerWeek[2]} PHP </h2>
-          <h2>Week 4 Total Sales: {salesPerWeek[3]} PHP </h2>
-        </div> */
 }
 
 {
