@@ -9,19 +9,19 @@ export default function WeeklyBarChart({ salesPerWeek }) {
   ];
   const formatCurrency = (value) => `₱${value.toLocaleString()}`;
   return (
-    <div className="mt-4 rounded-lg border-2 border-gray-200 bg-white px-4 py-4 pr-8 drop-shadow-md">
+    <div className="mt-4 rounded-2xl border-2 border-gray-200 bg-white px-4 py-4 pr-8 drop-shadow-md">
       <h3 className="mb-4 font-medium text-gray-700">
         Sales Per Week Bar Chart
       </h3>
       <BarChart width={600} height={300} data={data}>
-        <XAxis dataKey="week" stroke="#8884d8" />
+        <XAxis dataKey="week" stroke="#4789F6" />
         <YAxis tickFormatter={formatCurrency} />
         <Tooltip formatter={(value) => formatCurrency(value)} />
         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
         <Bar
           label={{ position: "top", formatter: formatCurrency }}
           dataKey="GrossSales"
-          fill="#8884d8"
+          fill="#4789F6"
           barSize={30}
         />
       </BarChart>

@@ -2,20 +2,23 @@ import { FaArrowTrendUp } from "react-icons/fa6";
 export default function AverageSalesPerWeek() {
   return (
     <>
-      <div className="m-4 w-full rounded-2xl border-2 border-gray-200 bg-gray-50 px-2 py-4 drop-shadow-md">
-        <div className="rounded-2xl border-2 border-gray-200 bg-white p-4 drop-shadow-sm">
-          <h3 className="font-bold opacity-70">Average Gross Sales Per Week</h3>
-          <h1 className="mt-2 text-[1.5vw] font-semibold text-blue-500">
-            ₱1200
-          </h1>
+      <div className="bg-gray-0 m-4 flex w-full flex-col rounded-2xl border-2 border-gray-200 bg-gray-50 px-2 py-2">
+        <div className="flex-col rounded-2xl border-2 border-gray-200 bg-white p-4 drop-shadow-sm">
+          <h1 className="mb-2 font-bold"> Average Weekly Sales </h1>
+          <div className="flex">
+            <h2 className="font-semibold text-blue-500">$8,980</h2>
+            <h5 className="ml-2 mt-1 text-[0.9vw] font-medium text-green-600">
+              +12% Increase
+            </h5>
+            <FaArrowTrendUp className="ml-1 mt-1 text-green-600" />
+          </div>
         </div>
-        <div className="mt-2 flex">
-          <span className="flex pl-2 text-[1.1vw] font-semibold text-green-500">
-            +0.8% <FaArrowTrendUp className="ml-1 mt-1 text-green-600" />
+        <div className="flex">
+          <span className="py-1 pl-2 pr-1 text-[0.9vw] font-semibold">
+            +₱1580
           </span>
-
-          <span className="pl-1 pt-0.5 text-[1vw] font-medium text-green-500">
-            Increase Each Week
+          <span className="py-1 text-[0.9vw] font-medium text-gray-500">
+            from last week You are Doing Great!
           </span>
         </div>
       </div>

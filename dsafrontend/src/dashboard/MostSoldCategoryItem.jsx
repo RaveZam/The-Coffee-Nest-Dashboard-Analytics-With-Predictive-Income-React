@@ -28,41 +28,52 @@ export default function MostSoldCategoryItem() {
   }
 
   return (
-    <div className="my-12">
+    <div className="m-4 my-12 rounded-2xl border-2 border-gray-200 bg-white p-8 drop-shadow-md">
       <h1 className="text-[1.5vw] font-extrabold">
         Sales percentage by Category
       </h1>
       <div className="mt-4 flex gap-x-4">
-        <div className="w-1/2 rounded-lg border-2 border-gray-300 bg-white p-4 pl-12 text-left drop-shadow-xl">
-          <h3>{sortedCategory[0].category}</h3>
-          <h1 className="text-[1.4vw] font-extrabold">
+        <div className="w-1/2 rounded-lg border-2 border-gray-300 bg-white p-4 pl-8 text-left drop-shadow-sm">
+          <h3 className="text-[0.9vw] font-bold">
+            {sortedCategory[0].category}
+          </h3>
+          <h1 className="text-prof-blue text-[1.4vw] font-extrabold opacity-80">
             {((sortedCategory[0].category_count / categoryTotal) * 100).toFixed(
               2,
             )}
             %
           </h1>
         </div>
-        <div className="w-1/2 rounded-lg border-2 border-gray-300 bg-white p-4 pl-12 text-left drop-shadow-xl">
-          <h3> {sortedCategory[1].category} </h3>
-          <h1 className="text-[1.4vw] font-extrabold">
+        <div className="w-1/2 rounded-lg border-2 border-gray-300 bg-white p-4 pl-8 text-left drop-shadow-sm">
+          <h3 className="text-[0.9vw] font-bold">
+            {" "}
+            {sortedCategory[1].category}{" "}
+          </h3>
+          <h1 className="text-prof-blue text-[1.4vw] font-extrabold opacity-80">
             {((sortedCategory[1].category_count / categoryTotal) * 100).toFixed(
               2,
             )}
             %
           </h1>
         </div>
-        <div className="w-1/2 rounded-lg border-2 border-gray-300 bg-white p-4 pl-12 text-left drop-shadow-xl">
-          <h3> {sortedCategory[2].category} </h3>{" "}
-          <h1 className="text-[1.4vw] font-extrabold">
+        <div className="w-1/2 rounded-lg border-2 border-gray-300 bg-white p-4 pl-8 text-left drop-shadow-sm">
+          <h3 className="text-[0.9vw] font-bold">
+            {" "}
+            {sortedCategory[2].category}{" "}
+          </h3>{" "}
+          <h1 className="text-prof-blue text-[1.4vw] font-extrabold opacity-80">
             {((sortedCategory[2].category_count / categoryTotal) * 100).toFixed(
               2,
             )}
             %
           </h1>
         </div>
-        <div className="w-1/2 rounded-lg border-2 border-gray-300 bg-white p-4 pl-12 text-left drop-shadow-xl">
-          <h3> {sortedCategory[3].category}</h3>
-          <h1 className="text-[1.4vw] font-extrabold">
+        <div className="w-1/2 rounded-lg border-2 border-gray-300 bg-white p-4 pl-8 text-left drop-shadow-sm">
+          <h3 className="text-[0.9vw] font-bold">
+            {" "}
+            {sortedCategory[3].category}
+          </h3>
+          <h1 className="text-prof-blue text-[1.4vw] font-extrabold opacity-80">
             {((sortedCategory[3].category_count / categoryTotal) * 100).toFixed(
               2,
             )}

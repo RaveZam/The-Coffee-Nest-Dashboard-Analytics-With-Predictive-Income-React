@@ -3,7 +3,11 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["work sans", "sans-serif"],
+        sans: ["Work sans", "sans-serif"],
+        realsans: ["Work sans", "sans-serif"],
+      },
+      colors: {
+        "prof-blue": "#1B59F9",
       },
     },
   },

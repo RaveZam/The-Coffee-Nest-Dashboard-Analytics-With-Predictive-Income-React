@@ -58,42 +58,10 @@ export default function EstimatedIncome() {
       <div className="mt-4 flex gap-4">
         <WeeklyBarChart salesPerWeek={salesPerWeek} />
         <div className="w-full">
-          <PredictiveIncome className="flex-grow" />
+          <PredictiveIncome />
           <AverageSalesPerWeek />
         </div>
       </div>
     </div>
   );
-}
-
-{
-  /* //Sales Report Area Per Week */
-}
-{
-  /* <div className="mr-8 mt-8">
-          <h1 className="mb-4 text-[1vw] font-semibold">
-            Sales Report From Corresponding Weeks
-          </h1>
-          <div className="flex gap-4">
-            <div className="w-1/2 rounded-2xl border-2 border-gray-300 bg-white p-4 px-6">
-              <h2 className="text-[1.3vw] font-semibold"> Week 2 Sales </h2>
-              <h1 className="flex text-[1.1vw] font-semibold text-green-500">
-                {week2Difference}% Sales
-                <FaArrowTrendUp className="ml-2 mt-1" />
-              </h1>
-            </div>
-            <div className="w-1/2 rounded-2xl border-2 border-gray-300 bg-white p-4 px-6">
-              <h2 className="text-[1.3vw] font-semibold">Week 3 Sales </h2>
-              <h1 className="flex text-[1.1vw] font-semibold text-green-500">
-                +12% Sales <FaArrowTrendUp className="ml-2 mt-1" />
-              </h1>
-            </div>
-            <div className="w-1/2 rounded-2xl border-2 border-gray-300 bg-white p-4 px-6">
-              <h2 className="text-[1.3vw] font-semibold">Week 4 Sales </h2>
-              <h1 className="flex text-[1.1vw] font-semibold text-red-500">
-                -5% Sales <FaArrowTrendDown className="ml-2 mt-1" />
-              </h1>
-            </div>
-          </div>
-        </div> */
 }
