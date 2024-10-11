@@ -3,7 +3,7 @@ import { FaArrowTrendUp } from "react-icons/fa6";
 export default function TotalSales({ grosssales, itemsSold }) {
   return (
     <div>
-      <h1 className="text-[2.2vw] font-bold">Dashboard</h1>
+      <h1 className="text-[2.2vw]">Dashboard</h1>
       <span className="text-gray-600">Last 28 Days</span>
       <div className="mt-4 flex gap-4">
         {/* // */}
