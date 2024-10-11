@@ -4,6 +4,7 @@ import MostSoldItem from "./MostSoldItem";
 import MostSoldCategoryItem from "./MostSoldCategoryItem";
 import LineGraph from "./LineGraph";
 import TotalSales from "./TotalSales";
+import PieChartComponent from "./PieChartComponent";
 // import { VictoryChart, VictoryTheme, VictoryLine } from "victory";
 
 export default function Dashboard() {
@@ -65,7 +66,10 @@ export default function Dashboard() {
   return (
     <div>
       <TotalSales grosssales={grosssales} itemsSold={itemsSold} />
-      <LineGraph resultArray={resultArray} />
+      <div className="flex">
+        <LineGraph resultArray={resultArray} />
+        <PieChartComponent />
+      </div>
       <MostSoldItem />
       <MostSoldCategoryItem />
     </div>
