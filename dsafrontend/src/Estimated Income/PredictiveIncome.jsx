@@ -15,7 +15,7 @@ export default function PredictiveIncome() {
           +₱1580
         </span>
         <span className="py-1 text-[0.9vw] font-medium text-gray-500">
-          more from Previous Month
+          more from Current Month
         </span>
       </div>
     </div>
