@@ -5,6 +5,7 @@ import MostSoldCategoryItem from "./MostSoldCategoryItem";
 import LineGraph from "./LineGraph";
 import TotalSales from "./TotalSales";
 import PieChartComponent from "./PieChartComponent";
+import MostPopularItem from "./MostPopularItem";
 // import { VictoryChart, VictoryTheme, VictoryLine } from "victory";
 
 export default function Dashboard() {
@@ -65,8 +66,10 @@ export default function Dashboard() {
 
   return (
     <div>
-      <TotalSales grosssales={grosssales} itemsSold={itemsSold} />
-      <div className="flex">
+      <div>
+        <TotalSales grosssales={grosssales} itemsSold={itemsSold} />
+      </div>
+      <div className="flex gap-4">
         <LineGraph resultArray={resultArray} />
         <PieChartComponent />
       </div>
@@ -75,5 +78,13 @@ export default function Dashboard() {
     </div>
   );
 }
-
+// cart = [
+//   { itemname: nigga, price: cheapasfuk },
+//   { itemname: nigga, price: cheapasfuk },
+//   { itemname: nigga, price: cheapasfuk },
+//   { itemname: nigga, price: cheapasfuk },
+//   { itemname: nigga, price: cheapasfuk },
+// ];
 //ctrl alt L for turbo console.log
+
+// cart.forEach((item) => console.log(item.itemnamem, item.price));

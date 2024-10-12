@@ -56,7 +56,7 @@ export default function EstimatedIncome() {
       <h1 className="w-1/4 text-[2.2vw]">Weekly Insight</h1>
       <span className="text-gray-600">Last 28 Days</span>
       <WeeklyIncome salesPerWeek={salesPerWeek} />
-      <div className="mt-4 flex gap-4">
+      <div className="flex gap-4">
         <WeeklyBarChart salesPerWeek={salesPerWeek} />
         <div className="w-full">
           <PredictiveIncome />

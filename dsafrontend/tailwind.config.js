@@ -7,7 +7,8 @@ module.exports = {
         realsans: ["Work sans", "sans-serif"],
       },
       colors: {
-        "prof-blue": "#1B59F9",
+        "prof-blue": "#3661EB",
+        "hulk-green": "#hehehdeh",
       },
     },
   },

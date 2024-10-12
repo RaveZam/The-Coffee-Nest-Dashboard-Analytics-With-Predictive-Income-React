@@ -3,7 +3,7 @@ import { FaArrowTrendDown } from "react-icons/fa6";
 export default function WeeklyIncome({ salesPerWeek }) {
   return (
     <div className="mt-2">
-      <h1 className="font-semibold text-[1.8]">
+      <h1 className="text-[1vw] font-semibold">
         Sales Report From Corresponding Previous Weeks
       </h1>
       <div className="mt-2 flex gap-4">
@@ -14,10 +14,10 @@ export default function WeeklyIncome({ salesPerWeek }) {
               <h2 className="font-semibold text-blue-500">
                 ₱{salesPerWeek[0]}
               </h2>
-              <h5 className="ml-2 mt-1 text-[0.9vw] font-medium text-green-600">
+              <h5 className="ml-2 mt-1 text-[0.9vw] font-medium text-[#11B29F]">
                 0% Increase
               </h5>
-              <FaArrowTrendUp className="ml-1 mt-1 text-green-600" />
+              <FaArrowTrendUp className="ml-1 mt-1 text-[#11B29F]" />
             </div>
           </div>
           <div className="flex">
