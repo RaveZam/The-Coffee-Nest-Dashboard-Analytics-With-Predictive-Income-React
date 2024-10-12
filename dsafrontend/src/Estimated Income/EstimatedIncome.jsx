@@ -9,6 +9,8 @@ import WeeklyIncome from "./WeeklyIncome";
 import WeeklyBarChart from "./WeeklyBarChart";
 import PredictiveIncome from "./PredictiveIncome";
 import AverageSalesPerWeek from "./AverageSalesPerWeek";
+import { IoIosCalendar } from "react-icons/io";
+import { RiArrowDropDownLine } from "react-icons/ri";
 
 export default function EstimatedIncome() {
   const [salesPerDay, setsalesPerDay] = useState([]);
@@ -55,8 +57,21 @@ export default function EstimatedIncome() {
 
   return (
     <div className="flex-wrap">
-      <h1 className="w-1/4 text-[2.2vw]">Weekly Insight</h1>
-      <span className="text-gray-600">Last 28 Days</span>
+      <div className="flex">
+        <div>
+          <h1 className="text-[2.2vw]">Weekly Insight</h1>
+          <span className="text-gray-600">Last 28 Days</span>
+        </div>
+        <div className="ml-auto flex items-center">
+          <div className="rounded-2xl border-2 border-gray-200 bg-gray-50 p-4">
+            <h1 className="flex text-[0.8vw]">
+              <IoIosCalendar className="mr-4 mt-1 scale-150" />
+              September 3 - October 1
+              <RiArrowDropDownLine className="ml-2 mt-1 scale-150" />
+            </h1>
+          </div>
+        </div>
+      </div>
       <WeeklyIncome
         week2Difference={week2Difference}
         week3Difference={week3Difference}
@@ -70,7 +85,6 @@ export default function EstimatedIncome() {
           <AverageSalesPerWeek />
         </div>
       </div>
-      <button onClick={() => console.log(weeklyDifference[2])}> Click</button>
     </div>
   );
 }

@@ -21,7 +21,6 @@ export default function PieChartComponent() {
         Most Sold type of food
         <MdMoreHoriz className="ml-auto mr-1 mt-1 scale-150" />
       </h1>
-      {/* <button onClick={() => console.log(sortedCategory)}> Log</button> */}
       <BarChart
         className="mt-2 translate-x-[-1rem]"
         width={450}

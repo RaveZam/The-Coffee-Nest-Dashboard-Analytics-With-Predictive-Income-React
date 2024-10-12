@@ -2,15 +2,14 @@ import { FaArrowTrendUp } from "react-icons/fa6";
 import { FaArrowTrendDown } from "react-icons/fa6";
 import IncreaseComponent from "../components/IncreaseComponent";
 import DecreaseComponent from "../components/DecreaseComponent";
+import SmallLoading from "../preloaders/SmallLoading";
 export default function WeeklyIncome({
   salesPerWeek,
   week2Difference,
   week3Difference,
   week4Difference,
 }) {
-  // if ((week2Difference = NaN)) {
-  //   return <div>Loading...</div>;
-  // }
+  let result;
   return (
     <div className="mt-2">
       <h1 className="text-[1vw] font-semibold">
@@ -42,12 +41,20 @@ export default function WeeklyIncome({
               <h2 className="text-prof-blue font-semibold">
                 ₱{salesPerWeek[1]}
               </h2>
-              <IncreaseComponent value={week2Difference.toFixed(2)} />
+              {isNaN(week2Difference) ? (
+                <SmallLoading />
+              ) : week2Difference > 0 ? (
+                <IncreaseComponent value={week2Difference.toFixed(2)} />
+              ) : (
+                <DecreaseComponent value={week2Difference.toFixed(2)} />
+              )}
             </div>
           </div>
           <div className="flex">
             <span className="py-1 pl-2 pr-1 text-[0.9vw] font-semibold">
-              +₱1580
+              {salesPerWeek[1] - salesPerWeek[0] < 0
+                ? `-₱${Math.abs(salesPerWeek[0] - salesPerWeek[0])}`
+                : `+₱${salesPerWeek[1] - salesPerWeek[0]}`}
             </span>
             <span className="py-1 text-[0.9vw] font-medium text-gray-500">
               from last week
@@ -62,12 +69,20 @@ export default function WeeklyIncome({
               <h2 className="text-prof-blue font-semibold">
                 ₱{salesPerWeek[2]}
               </h2>
-              <DecreaseComponent />
+              {isNaN(week3Difference) ? (
+                <SmallLoading />
+              ) : week3Difference > 0 ? (
+                <IncreaseComponent value={week3Difference.toFixed(2)} />
+              ) : (
+                <DecreaseComponent value={week3Difference.toFixed(2)} />
+              )}
             </div>
           </div>
           <div className="flex">
             <span className="py-1 pl-2 pr-1 text-[0.9vw] font-semibold">
-              +₱1580
+              {salesPerWeek[2] - salesPerWeek[1] < 0
+                ? `-₱${Math.abs(salesPerWeek[2] - salesPerWeek[1])}`
+                : `+₱${salesPerWeek[2] - salesPerWeek[1]}`}
             </span>
             <span className="py-1 text-[0.9vw] font-medium text-gray-500">
               from last week
@@ -82,13 +97,20 @@ export default function WeeklyIncome({
               <h2 className="text-prof-blue font-semibold">
                 ₱{salesPerWeek[3]}
               </h2>
-
-              <IncreaseComponent />
+              {isNaN(week4Difference) ? (
+                <SmallLoading />
+              ) : week4Difference > 0 ? (
+                <IncreaseComponent value={week4Difference.toFixed(2)} />
+              ) : (
+                <DecreaseComponent value={week4Difference.toFixed(2)} />
+              )}
             </div>
           </div>
           <div className="flex">
             <span className="py-1 pl-2 pr-1 text-[0.9vw] font-semibold">
-              +₱1580
+              {salesPerWeek[3] - salesPerWeek[2] < 0
+                ? `-₱${Math.abs(salesPerWeek[3] - salesPerWeek[2])}`
+                : `+₱${salesPerWeek[3] - salesPerWeek[2]}`}
             </span>
             <span className="py-1 text-[0.9vw] font-medium text-gray-500">
               from last week
