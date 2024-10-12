@@ -21,7 +21,7 @@ export default function WeeklyBarChart({ salesPerWeek }) {
         <Bar
           label={{ position: "top", formatter: formatCurrency }}
           dataKey="GrossSales"
-          fill="#4789F6"
+          fill="#3661EB"
           barSize={30}
         />
       </BarChart>

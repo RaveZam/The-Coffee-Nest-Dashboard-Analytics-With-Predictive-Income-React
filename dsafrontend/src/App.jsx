@@ -7,13 +7,13 @@ import Header from "./header/Header";
 function App() {
   const [navigate, navigateTo] = useState("dashboard");
   return (
-    <>
+    <div>
       <Header />
       <div className="mr-12 flex">
         <Sidebar navigateTo={navigateTo} />
         <Contentarea navigate={navigate} />
       </div>
-    </>
+    </div>
   );
 }
 

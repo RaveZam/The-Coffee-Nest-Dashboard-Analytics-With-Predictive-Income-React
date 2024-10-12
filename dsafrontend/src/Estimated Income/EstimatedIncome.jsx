@@ -12,11 +12,6 @@ import AverageSalesPerWeek from "./AverageSalesPerWeek";
 
 export default function EstimatedIncome() {
   const [salesPerDay, setsalesPerDay] = useState([]);
-  //   const [weeklyDifference, setWeeklyyDifference] = useState([0, 0, 0, 0]);
-  let week1Difference = 0;
-  let week2Difference = 0;
-  let week3Difference = 0;
-  let week4Difference = 0;
 
   useEffect(() => {
     axios
@@ -40,22 +35,34 @@ export default function EstimatedIncome() {
     setSalesPerWeek(weeks);
   }, [salesPerDay]);
 
-  useEffect(() => {
-    week2Difference =
-      ((salesPerWeek[1] - salesPerWeek[0]) / salesPerWeek[1]) * 100;
-    week3Difference =
-      ((salesPerWeek[2] - salesPerWeek[1]) / salesPerWeek[2]) * 100;
-    week4Difference =
-      ((salesPerWeek[3] - salesPerWeek[2]) / salesPerWeek[3]) * 100;
+  const [week2Difference, setWeek2Difference] = useState();
+  const [week3Difference, setWeek3Difference] = useState();
+  const [week4Difference, setWeek4Difference] = useState();
 
-    console.log(week2Difference.toFixed(0, 2) + "% Increase from last week");
+  useEffect(() => {
+    setWeek2Difference(
+      ((salesPerWeek[1] - salesPerWeek[0]) / salesPerWeek[1]) * 100,
+    );
+
+    setWeek3Difference(
+      ((salesPerWeek[2] - salesPerWeek[1]) / salesPerWeek[2]) * 100,
+    );
+
+    setWeek4Difference(
+      ((salesPerWeek[3] - salesPerWeek[2]) / salesPerWeek[3]) * 100,
+    );
   }, [salesPerDay]);
 
   return (
     <div className="flex-wrap">
       <h1 className="w-1/4 text-[2.2vw]">Weekly Insight</h1>
       <span className="text-gray-600">Last 28 Days</span>
-      <WeeklyIncome salesPerWeek={salesPerWeek} />
+      <WeeklyIncome
+        week2Difference={week2Difference}
+        week3Difference={week3Difference}
+        week4Difference={week4Difference}
+        salesPerWeek={salesPerWeek}
+      />
       <div className="flex gap-4">
         <WeeklyBarChart salesPerWeek={salesPerWeek} />
         <div className="w-full">
@@ -63,6 +70,7 @@ export default function EstimatedIncome() {
           <AverageSalesPerWeek />
         </div>
       </div>
+      <button onClick={() => console.log(weeklyDifference[2])}> Click</button>
     </div>
   );
 }

@@ -1,6 +1,16 @@
 import { FaArrowTrendUp } from "react-icons/fa6";
 import { FaArrowTrendDown } from "react-icons/fa6";
-export default function WeeklyIncome({ salesPerWeek }) {
+import IncreaseComponent from "../components/IncreaseComponent";
+import DecreaseComponent from "../components/DecreaseComponent";
+export default function WeeklyIncome({
+  salesPerWeek,
+  week2Difference,
+  week3Difference,
+  week4Difference,
+}) {
+  // if ((week2Difference = NaN)) {
+  //   return <div>Loading...</div>;
+  // }
   return (
     <div className="mt-2">
       <h1 className="text-[1vw] font-semibold">
@@ -11,13 +21,9 @@ export default function WeeklyIncome({ salesPerWeek }) {
           <div className="flex-col rounded-2xl border-2 border-gray-200 bg-white p-4 drop-shadow-sm">
             <h1 className="mb-2 font-bold"> Week 1 Sales </h1>
             <div className="flex">
-              <h2 className="font-semibold text-blue-500">
+              <h2 className="text-prof-blue font-semibold">
                 ₱{salesPerWeek[0]}
               </h2>
-              <h5 className="ml-2 mt-1 text-[0.9vw] font-medium text-[#11B29F]">
-                0% Increase
-              </h5>
-              <FaArrowTrendUp className="ml-1 mt-1 text-[#11B29F]" />
             </div>
           </div>
           <div className="flex">
@@ -29,18 +35,14 @@ export default function WeeklyIncome({ salesPerWeek }) {
             </span>
           </div>
         </div>
-
         <div className="bg-gray-0 flex w-1/4 flex-col rounded-2xl border-2 border-gray-200 bg-gray-50 px-2 py-2">
           <div className="flex-col rounded-2xl border-2 border-gray-200 bg-white p-4 drop-shadow-sm">
             <h1 className="mb-2 font-bold"> Week 2 Sales </h1>
             <div className="flex">
-              <h2 className="font-semibold text-blue-500">
+              <h2 className="text-prof-blue font-semibold">
                 ₱{salesPerWeek[1]}
               </h2>
-              <h5 className="ml-2 mt-1 text-[0.9vw] font-medium text-green-600">
-                +12% Increase
-              </h5>
-              <FaArrowTrendUp className="ml-1 mt-1 text-green-600" />
+              <IncreaseComponent value={week2Difference.toFixed(2)} />
             </div>
           </div>
           <div className="flex">
@@ -57,13 +59,10 @@ export default function WeeklyIncome({ salesPerWeek }) {
           <div className="flex-col rounded-2xl border-2 border-gray-200 bg-white p-4 drop-shadow-sm">
             <h1 className="mb-2 font-bold"> Week 3 Sales </h1>
             <div className="flex">
-              <h2 className="font-semibold text-blue-500">
+              <h2 className="text-prof-blue font-semibold">
                 ₱{salesPerWeek[2]}
               </h2>
-              <h5 className="ml-2 mt-1 text-[0.9vw] font-medium text-green-600">
-                +12% Increase
-              </h5>
-              <FaArrowTrendUp className="ml-1 mt-1 text-green-600" />
+              <DecreaseComponent />
             </div>
           </div>
           <div className="flex">
@@ -80,13 +79,11 @@ export default function WeeklyIncome({ salesPerWeek }) {
           <div className="flex-col rounded-2xl border-2 border-gray-200 bg-white p-4 drop-shadow-sm">
             <h1 className="mb-2 font-bold"> Week 4 Sales </h1>
             <div className="flex">
-              <h2 className="font-semibold text-blue-500">
+              <h2 className="text-prof-blue font-semibold">
                 ₱{salesPerWeek[3]}
               </h2>
-              <h5 className="ml-2 mt-1 text-[0.9vw] font-medium text-green-600">
-                +12% Increase
-              </h5>
-              <FaArrowTrendUp className="ml-1 mt-1 text-green-600" />
+
+              <IncreaseComponent />
             </div>
           </div>
           <div className="flex">

@@ -78,13 +78,3 @@ export default function Dashboard() {
     </div>
   );
 }
-// cart = [
-//   { itemname: nigga, price: cheapasfuk },
-//   { itemname: nigga, price: cheapasfuk },
-//   { itemname: nigga, price: cheapasfuk },
-//   { itemname: nigga, price: cheapasfuk },
-//   { itemname: nigga, price: cheapasfuk },
-// ];
-//ctrl alt L for turbo console.log
-
-// cart.forEach((item) => console.log(item.itemnamem, item.price));

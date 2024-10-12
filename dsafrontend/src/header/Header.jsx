@@ -1,6 +1,5 @@
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
-
 import { PiCoffeeBeanFill } from "react-icons/pi";
 
 export default function Header() {

@@ -1,4 +1,5 @@
 import { FaArrowTrendUp } from "react-icons/fa6";
+import IncreaseComponent from "../components/IncreaseComponent";
 export default function AverageSalesPerWeek() {
   return (
     <>
@@ -6,11 +7,8 @@ export default function AverageSalesPerWeek() {
         <div className="flex-col rounded-2xl border-2 border-gray-200 bg-white p-4 drop-shadow-sm">
           <h1 className="mb-2 font-bold"> Average Weekly Sales </h1>
           <div className="flex">
-            <h2 className="font-semibold text-blue-500">$8,980</h2>
-            <h5 className="ml-2 mt-1 text-[0.9vw] font-medium text-green-600">
-              +12% Increase
-            </h5>
-            <FaArrowTrendUp className="ml-1 mt-1 text-green-600" />
+            <h2 className="text-prof-blue font-semibold">$8,980</h2>
+            <IncreaseComponent />
           </div>
         </div>
         <div className="flex">
