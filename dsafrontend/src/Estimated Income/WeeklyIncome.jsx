@@ -11,7 +11,6 @@ export default function WeeklyIncome({
 }) {
   return (
     <div className="mt-2">
-      <button onClick={() => console.log(week1Difference)}>Log</button>
       <div className="mt-2 flex gap-4">
         <div className="bg-gray-0 flex w-1/4 flex-col rounded-2xl border-2 border-gray-200 bg-gray-50 px-2 py-2">
           <div className="flex-col rounded-2xl border-2 border-gray-200 bg-white p-4 drop-shadow-sm">
