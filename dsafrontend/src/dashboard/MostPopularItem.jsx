@@ -15,6 +15,7 @@ export default function MostPopularItem() {
         console.log(error);
       });
   }, []);
+
   if (sortedArray.length === 0) {
     // Display a loading message or a placeholder while data is being fetched
     return <div>Loading...</div>; //had to add this due to syncing problems

@@ -35,7 +35,7 @@ export default function Contentarea({ navigate }) {
 
   return (
     <div className="z-10 mr-4 mt-4 w-full">
-      {isLoading ? (
+      {/* {isLoading ? (
         <div
           style={{
             opacity: preloaderOpacity,
@@ -53,8 +53,8 @@ export default function Contentarea({ navigate }) {
         >
           {renderContent()}
         </div>
-      )}
-      {/* {renderContent()} */}
+      )} */}
+      {renderContent()}
     </div>
   );
 }

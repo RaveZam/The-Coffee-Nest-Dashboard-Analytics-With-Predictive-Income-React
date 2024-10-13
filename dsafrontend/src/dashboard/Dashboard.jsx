@@ -6,7 +6,7 @@ import LineGraph from "./LineGraph";
 import TotalSales from "./TotalSales";
 import PieChartComponent from "./PieChartComponent";
 import MostPopularItem from "./MostPopularItem";
-// import { VictoryChart, VictoryTheme, VictoryLine } from "victory";
+import Lastmonth from "./Lastmonth";
 
 export default function Dashboard() {
   const url = "http://localhost:8000/api/sales";
@@ -64,10 +64,43 @@ export default function Dashboard() {
 
   const resultArray = Object.values(salesByDate);
 
+  // Fetch Previous Months Data.
+  const [lastMonthGross, setLastMonthGross] = useState(); //Last Month Gross Sales
+  const [lastMonthTotalSales, setLastMonthTotalSales] = useState(); // Last Month Total Quanity
+  const [previousMonth, setPreviousMonths] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/previousmonthsales")
+      .then((response) => {
+        setPreviousMonths(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    console.log(previousMonth);
+  }, []);
+
+  // Compute Total Gross And Total Quantity of Previous Month
+  useEffect(() => {
+    let grossCounter = 0;
+    let totalItemCounter = 0;
+    previousMonth.forEach((item) => {
+      grossCounter += parseInt(item.final_price);
+      totalItemCounter += parseInt(item.final_quantity);
+      setLastMonthTotalSales(totalItemCounter);
+      setLastMonthGross(grossCounter);
+    });
+  }, []);
+
   return (
     <div>
       <div>
-        <TotalSales grosssales={grosssales} itemsSold={itemsSold} />
+        <TotalSales
+          lastMonthGross={lastMonthGross}
+          lastMonthTotalSales={lastMonthTotalSales}
+          grosssales={grosssales}
+          itemsSold={itemsSold}
+        />
       </div>
       <div className="flex gap-4">
         <LineGraph resultArray={resultArray} />
