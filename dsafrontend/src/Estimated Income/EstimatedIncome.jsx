@@ -26,6 +26,33 @@ export default function EstimatedIncome() {
       });
   }, []);
 
+  // Previous Month
+  const [previousMonth, setPreviousMonths] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/previousmonthsales")
+      .then((response) => {
+        setPreviousMonths(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  const [lastMonthSalesPerWeek, setLastMonthSalesPerWeek] = useState([
+    0, 0, 0, 0,
+  ]);
+
+  useEffect(() => {
+    let weeks = [0, 0, 0, 0];
+    previousMonth.forEach((item) => {
+      const date = new Date(item.sale_date);
+      const weekIndex = Math.floor(date.getDate() / 7);
+      weeks[weekIndex] += parseFloat(item.final_price);
+    });
+    setLastMonthSalesPerWeek(weeks);
+  }, [previousMonth]);
+
   const [salesPerWeek, setSalesPerWeek] = useState([0, 0, 0, 0]);
   useEffect(() => {
     let weeks = [0, 0, 0, 0];
@@ -37,6 +64,7 @@ export default function EstimatedIncome() {
     setSalesPerWeek(weeks);
   }, [salesPerDay]);
 
+  const [week1Difference, setWeek1Difference] = useState();
   const [week2Difference, setWeek2Difference] = useState();
   const [week3Difference, setWeek3Difference] = useState();
   const [week4Difference, setWeek4Difference] = useState();
@@ -52,6 +80,11 @@ export default function EstimatedIncome() {
 
     setWeek4Difference(
       ((salesPerWeek[3] - salesPerWeek[2]) / salesPerWeek[2]) * 100,
+    );
+    setWeek1Difference(
+      ((salesPerWeek[0] - lastMonthSalesPerWeek[3]) /
+        lastMonthSalesPerWeek[3]) *
+        100,
     );
   }, [salesPerDay]);
 
@@ -73,15 +106,22 @@ export default function EstimatedIncome() {
         </div>
       </div>
       <WeeklyIncome
+        week1Difference={week1Difference}
         week2Difference={week2Difference}
         week3Difference={week3Difference}
         week4Difference={week4Difference}
         salesPerWeek={salesPerWeek}
+        lastMonthSalesPerWeek={lastMonthSalesPerWeek}
       />
       <div className="flex gap-4">
         <WeeklyBarChart salesPerWeek={salesPerWeek} />
         <div className="w-full">
-          <PredictiveIncome />
+          <PredictiveIncome
+            week1Difference={week1Difference}
+            week2Difference={week2Difference}
+            week3Difference={week3Difference}
+            week4Difference={week4Difference}
+          />
           <AverageSalesPerWeek />
         </div>
       </div>

@@ -1,16 +1,17 @@
-import { FaArrowTrendUp } from "react-icons/fa6";
-import { FaArrowTrendDown } from "react-icons/fa6";
 import IncreaseComponent from "../components/IncreaseComponent";
 import DecreaseComponent from "../components/DecreaseComponent";
 import SmallLoading from "../preloaders/SmallLoading";
 export default function WeeklyIncome({
   salesPerWeek,
+  week1Difference,
   week2Difference,
   week3Difference,
   week4Difference,
+  lastMonthSalesPerWeek,
 }) {
   return (
     <div className="mt-2">
+      <button onClick={() => console.log(week1Difference)}>Log</button>
       <div className="mt-2 flex gap-4">
         <div className="bg-gray-0 flex w-1/4 flex-col rounded-2xl border-2 border-gray-200 bg-gray-50 px-2 py-2">
           <div className="flex-col rounded-2xl border-2 border-gray-200 bg-white p-4 drop-shadow-sm">
@@ -19,11 +20,30 @@ export default function WeeklyIncome({
               <h2 className="text-prof-blue font-semibold">
                 ₱{salesPerWeek[0]}
               </h2>
+              {isNaN(week1Difference) ? (
+                <SmallLoading />
+              ) : week1Difference > 0 ? (
+                <IncreaseComponent value={week1Difference.toFixed(2)} />
+              ) : (
+                <DecreaseComponent value={week1Difference.toFixed(2)} />
+              )}
             </div>
           </div>
           <div className="flex">
-            <span className="py-1 pl-2 pr-1 text-[0.9vw] font-semibold">
-              +₱0
+            <span className="animate-appearFromTop py-1 pl-2 pr-1 text-[0.9vw] font-semibold">
+              {isNaN(lastMonthSalesPerWeek[3]) || salesPerWeek[0] === 0 ? (
+                <div className="mr-2 mt-1 scale-90">
+                  <SmallLoading />
+                </div>
+              ) : salesPerWeek[0] - lastMonthSalesPerWeek[3] < 0 ? (
+                <span className="animate-appearFromTop">
+                  -₱{Math.abs(salesPerWeek[0] - lastMonthSalesPerWeek[3])}
+                </span>
+              ) : (
+                <span className="animate-appearFromTop">
+                  +₱{Math.abs(salesPerWeek[0] - lastMonthSalesPerWeek[3])}
+                </span>
+              )}
             </span>
             <span className="py-1 text-[0.9vw] font-medium text-gray-500">
               from last week
