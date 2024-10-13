@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Dashboard from "../dashboard/Dashboard";
+import Dashboard, { GrossSalesProvider } from "../dashboard/Dashboard";
 import Products from "../products/Products";
 import BouncingCircles from "../preloaders/BouncingCircles";
 import EstimatedIncome from "../Estimated Income/EstimatedIncome";
@@ -21,16 +21,22 @@ export default function Contentarea({ navigate }) {
   }, []);
 
   function renderContent() {
-    switch (navigate) {
-      case "Dashboard":
-        return <Dashboard />;
-      case "Products":
-        return <Products />;
-      case "EstimatedIncome":
-        return <EstimatedIncome />;
-      default:
-        return <Dashboard />;
-    }
+    return (
+      <GrossSalesProvider>
+        {(() => {
+          switch (navigate) {
+            case "Dashboard":
+              return <Dashboard />;
+            case "Products":
+              return <Products />;
+            case "EstimatedIncome":
+              return <EstimatedIncome />;
+            default:
+              return <Dashboard />;
+          }
+        })()}
+      </GrossSalesProvider>
+    );
   }
 
   return (

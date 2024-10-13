@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, createContext, useContext } from "react";
 import axios from "axios";
 import MostSoldItem from "./MostSoldItem";
 import MostSoldCategoryItem from "./MostSoldCategoryItem";
@@ -7,11 +7,27 @@ import TotalSales from "./TotalSales";
 import PieChartComponent from "./PieChartComponent";
 import MostPopularItem from "./MostPopularItem";
 
+// Create the context for gross sales
+export const GrossSalesContext = createContext();
+
+export const GrossSalesProvider = ({ children }) => {
+  const [grosssales, setGrossSales] = useState(0.0);
+
+  return (
+    <GrossSalesContext.Provider value={{ grosssales, setGrossSales }}>
+      {children}
+    </GrossSalesContext.Provider>
+  );
+};
+
 export default function Dashboard() {
   const url = "http://localhost:8000/api/sales";
   const [salesTable, setsalesTable] = useState([]);
   const [itemsSold, setItemsSold] = useState(0);
-  const [grosssales, setGrossSales] = useState(0.0);
+
+  // Access the grosssales state and setter from context
+  const { grosssales, setGrossSales } = useContext(GrossSalesContext);
+
   useEffect(() => {
     axios
       .get(url)
@@ -34,14 +50,15 @@ export default function Dashboard() {
         console.log(error);
       });
   }, []);
+
   // total price counter
   useEffect(() => {
     let grossCounter = 0;
     salesTable.forEach((sale) => {
       const price = parseInt(sale.total_price);
       grossCounter += price;
-      setGrossSales(grossCounter);
     });
+    setGrossSales(grossCounter);
 
     let totalQuantityCounter = 0;
     salesTable.forEach((sale) => {
@@ -64,8 +81,8 @@ export default function Dashboard() {
   const resultArray = Object.values(salesByDate);
 
   // Fetch Previous Months Data.
-  const [lastMonthGross, setLastMonthGross] = useState(); //Last Month Gross Sales
-  const [lastMonthTotalSales, setLastMonthTotalSales] = useState(); // Last Month Total Quanity
+  const [lastMonthGross, setLastMonthGross] = useState(0); //Last Month Gross Sales
+  const [lastMonthTotalSales, setLastMonthTotalSales] = useState(0); // Last Month Total Quanity
   const [previousMonth, setPreviousMonths] = useState([]);
   useEffect(() => {
     axios
@@ -85,9 +102,9 @@ export default function Dashboard() {
     previousMonth.forEach((item) => {
       grossCounter += parseInt(item.final_price);
       totalItemCounter += parseInt(item.final_quantity);
-      setLastMonthTotalSales(totalItemCounter);
-      setLastMonthGross(grossCounter);
     });
+    setLastMonthTotalSales(totalItemCounter);
+    setLastMonthGross(grossCounter);
   }, [previousMonth]);
 
   return (
