@@ -14,55 +14,74 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 
 export default function EstimatedIncome() {
   const [salesPerDay, setsalesPerDay] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:8000/api/totalpriceperday")
-      .then((response) => {
-        setsalesPerDay(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
-  // Previous Month
   const [previousMonth, setPreviousMonths] = useState([]);
-  useEffect(() => {
-    axios
-      .get("http://localhost:8000/api/previousmonthsales")
-      .then((response) => {
-        setPreviousMonths(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [salesPerDay, previousMonth] = await Promise.all([
+          axios.get("http://localhost:8000/api/totalpriceperday"),
+          axios.get("http://localhost:8000/api/previousmonthsales"),
+        ]);
+        setsalesPerDay(salesPerDay.data);
+        setPreviousMonths(previousMonth.data);
+      } catch (error) {
+        console.log;
+      }
+    };
+
+    fetchData();
+  }, []);
+  // inefficient code i have that lags
+  // const [lastMonthSalesPerWeek, setLastMonthSalesPerWeek] = useState([
+  //   0, 0, 0, 0,
+  // ]);
+  // useEffect(() => {
+  //   let weeks = [0, 0, 0, 0];
+  //   previousMonth.forEach((item) => {
+  //     const date = new Date(item.sale_date);
+  //     const weekIndex = Math.floor(date.getDate() / 7);
+  //     weeks[weekIndex] += parseFloat(item.final_price);
+  //   });
+  //   setLastMonthSalesPerWeek(weeks);
+  // }, [previousMonth]);
+
+  // const [salesPerWeek, setSalesPerWeek] = useState([0, 0, 0, 0]);
+  // useEffect(() => {
+  //   let weeks = [0, 0, 0, 0];
+  //   salesPerDay.forEach((item) => {
+  //     const date = new Date(item.sale_date);
+  //     const weekIndex = Math.floor(date.getDate() / 7);
+  //     weeks[weekIndex] += parseFloat(item.final_price);
+  //   });
+  //   setSalesPerWeek(weeks);
+  // }, [salesPerDay]);
+  //Gpt Version Below --
   const [lastMonthSalesPerWeek, setLastMonthSalesPerWeek] = useState([
     0, 0, 0, 0,
   ]);
+  const [salesPerWeek, setSalesPerWeek] = useState([0, 0, 0, 0]);
 
-  useEffect(() => {
-    let weeks = [0, 0, 0, 0];
-    previousMonth.forEach((item) => {
+  // Utility function to calculate weekly sales
+  const calculateWeeklySales = (data) => {
+    const weeks = [0, 0, 0, 0]; // Array to hold sales for each week
+    data.forEach((item) => {
       const date = new Date(item.sale_date);
       const weekIndex = Math.floor(date.getDate() / 7);
       weeks[weekIndex] += parseFloat(item.final_price);
     });
-    setLastMonthSalesPerWeek(weeks);
+    return weeks;
+  };
+
+  useEffect(() => {
+    setLastMonthSalesPerWeek(calculateWeeklySales(previousMonth));
   }, [previousMonth]);
 
-  const [salesPerWeek, setSalesPerWeek] = useState([0, 0, 0, 0]);
   useEffect(() => {
-    let weeks = [0, 0, 0, 0];
-    salesPerDay.forEach((item) => {
-      const date = new Date(item.sale_date);
-      const weekIndex = Math.floor(date.getDate() / 7);
-      weeks[weekIndex] += parseFloat(item.final_price);
-    });
-    setSalesPerWeek(weeks);
+    setSalesPerWeek(calculateWeeklySales(salesPerDay));
   }, [salesPerDay]);
+
+  // up to here
 
   const [week1Difference, setWeek1Difference] = useState();
   const [week2Difference, setWeek2Difference] = useState();
