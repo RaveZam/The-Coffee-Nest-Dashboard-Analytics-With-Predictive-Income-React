@@ -1,9 +1,12 @@
 import MostPopularItem from "./MostPopularItem";
 import { MdMoreHoriz } from "react-icons/md";
-import IncreaseComponent from "../components/IncreaseComponent";
 import { IoIosCalendar } from "react-icons/io";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { IoArrowUpCircleOutline } from "react-icons/io5";
+import IncreaseComponent from "../components/IncreaseComponent";
+import DecreaseComponent from "../components/DecreaseComponent";
+import SmallLoading from "../preloaders/SmallLoading";
+import { useState, useEffect } from "react";
 
 export default function TotalSales({
   grosssales,
@@ -12,6 +15,17 @@ export default function TotalSales({
   lastMonthTotalSales,
 }) {
   const formattedGrossSale = grosssales.toLocaleString();
+  const [TotalGrossDifference, setTotalGrossDifference] = useState(0);
+  const [TotalSalesDifference, setTotalSalesDifference] = useState(0);
+  useEffect(() => {
+    setTotalGrossDifference(
+      ((grosssales - lastMonthGross) / lastMonthGross) * 100,
+    );
+    setTotalSalesDifference(
+      ((itemsSold - lastMonthTotalSales) / lastMonthTotalSales) * 100,
+    );
+  }, [lastMonthGross]);
+
   return (
     <div>
       <div className="flex">
@@ -38,19 +52,44 @@ export default function TotalSales({
             </h1>
 
             <div className="flex">
-              <h2 className="text-prof-blue text-2xl font-semibold">
-                ${grosssales.toLocaleString()}
-              </h2>
-              <IncreaseComponent />
+              {isNaN(grosssales) || grosssales === 0 ? (
+                <div className="mt-2">
+                  <SmallLoading />
+                </div>
+              ) : TotalGrossDifference > 0 ? (
+                <h2 className="text-prof-blue flex text-2xl font-semibold">
+                  <span className="animate-appearFromTop">
+                    ${grosssales.toLocaleString()}
+                  </span>
+                  <IncreaseComponent value={TotalGrossDifference.toFixed(2)} />
+                </h2>
+              ) : (
+                <h2 className="text-prof-blue flex text-2xl font-semibold">
+                  <span className="animate-appearFromTop">
+                    ${grosssales.toLocaleString()}
+                  </span>
+                  <DecreaseComponent value={TotalGrossDifference.toFixed(2)} />
+                </h2>
+              )}
             </div>
           </div>
-          <div className="flex">
+          <div className="mt-[2px] flex">
             <span className="py-1 pl-2 pr-1 text-[0.9vw] font-semibold">
-              {grosssales - lastMonthGross < 0
-                ? `-₱${Math.abs(grosssales - lastMonthGross)}`
-                : `+₱${Math.abs(grosssales - lastMonthGross)}`}
+              {isNaN(lastMonthGross) ? (
+                <div className="mr-2 mt-1 scale-90">
+                  <SmallLoading />
+                </div>
+              ) : grosssales - lastMonthGross < 0 ? (
+                <span className="animate-appearFromTop">
+                  -₱{Math.abs(grosssales - lastMonthGross)}
+                </span>
+              ) : (
+                <span className="animate-appearFromTop">
+                  +₱{Math.abs(grosssales - lastMonthGross)}
+                </span>
+              )}
             </span>
-            <span className="py-1 text-[0.9vw] font-medium text-gray-500">
+            <span className="mt-[5px] text-[0.8vw] font-medium text-gray-500">
               from last Month
             </span>
           </div>
@@ -62,23 +101,42 @@ export default function TotalSales({
               Total Items Sold <MdMoreHoriz className="ml-auto scale-150" />
             </h1>
             <div className="flex">
-              <h2 className="text-prof-blue text-2xl font-semibold">
-                {itemsSold}
-              </h2>
-              <span className="ml-1 translate-y-1 text-[1.1vw] text-gray-700">
-                Products
-              </span>
-              <IncreaseComponent />
+              {isNaN(TotalSalesDifference) ? (
+                <div className="mt-2">
+                  <SmallLoading />
+                </div>
+              ) : TotalSalesDifference > 0 ? (
+                <h2 className="animate-appearFromTop text-prof-blue flex text-2xl font-semibold">
+                  {itemsSold}
+
+                  <span className="ml-1 text-[0.9vw] text-gray-700">
+                    Products
+                  </span>
+                  <IncreaseComponent value={TotalSalesDifference.toFixed(2)} />
+                </h2>
+              ) : (
+                <DecreaseComponent value={TotalSalesDifference.toFixed(2)} />
+              )}
             </div>
           </div>
-          <div className="flex">
+          <div className="mt-[2px] flex">
             <span className="py-1 pl-2 pr-1 text-[0.9vw] font-semibold">
-              {itemsSold - lastMonthTotalSales < 0
-                ? `-₱${Math.abs(itemsSold - lastMonthTotalSales)}`
-                : `+₱${Math.abs(itemsSold - lastMonthTotalSales)}`}
+              {isNaN(lastMonthGross) ? (
+                <div className="mr-2 mt-1 scale-90">
+                  <SmallLoading />
+                </div>
+              ) : itemsSold - lastMonthTotalSales < 0 ? (
+                <span className="animate-appearFromTop">
+                  -₱{Math.abs(itemsSold - lastMonthTotalSales)}
+                </span>
+              ) : (
+                <span className="animate-appearFromTop">
+                  +₱{Math.abs(itemsSold - lastMonthTotalSales)}
+                </span>
+              )}
             </span>
-            <span className="py-1 text-[0.9vw] font-medium text-gray-500">
-              more sold from last Month
+            <span className="mt-[5px] text-[0.8vw] font-medium text-gray-500">
+              sold compare to last Month
             </span>
           </div>
         </div>

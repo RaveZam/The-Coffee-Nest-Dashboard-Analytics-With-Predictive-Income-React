@@ -1,4 +1,12 @@
-import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+  ResponsiveContainer,
+} from "recharts";
 
 export default function WeeklyBarChart({ salesPerWeek }) {
   const data = [
@@ -13,7 +21,13 @@ export default function WeeklyBarChart({ salesPerWeek }) {
       <h3 className="mb-4 font-medium text-gray-700">
         Sales Per Week Bar Chart
       </h3>
-      <BarChart width={600} height={300} data={data}>
+
+      <BarChart
+        margin={{ top: 30, right: 20, bottom: 5, left: 0 }}
+        width={600}
+        height={300}
+        data={data}
+      >
         <XAxis dataKey="week" stroke="#4789F6" />
         <YAxis tickFormatter={formatCurrency} />
         <Tooltip formatter={(value) => formatCurrency(value)} />

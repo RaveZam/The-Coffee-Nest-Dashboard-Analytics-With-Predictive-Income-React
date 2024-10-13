@@ -43,15 +43,15 @@ export default function EstimatedIncome() {
 
   useEffect(() => {
     setWeek2Difference(
-      ((salesPerWeek[1] - salesPerWeek[0]) / salesPerWeek[1]) * 100,
+      ((salesPerWeek[1] - salesPerWeek[0]) / salesPerWeek[0]) * 100,
     );
 
     setWeek3Difference(
-      ((salesPerWeek[2] - salesPerWeek[1]) / salesPerWeek[2]) * 100,
+      ((salesPerWeek[2] - salesPerWeek[1]) / salesPerWeek[1]) * 100,
     );
 
     setWeek4Difference(
-      ((salesPerWeek[3] - salesPerWeek[2]) / salesPerWeek[3]) * 100,
+      ((salesPerWeek[3] - salesPerWeek[2]) / salesPerWeek[2]) * 100,
     );
   }, [salesPerDay]);
 

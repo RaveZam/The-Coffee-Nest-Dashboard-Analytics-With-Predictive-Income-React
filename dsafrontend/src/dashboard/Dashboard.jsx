@@ -6,7 +6,6 @@ import LineGraph from "./LineGraph";
 import TotalSales from "./TotalSales";
 import PieChartComponent from "./PieChartComponent";
 import MostPopularItem from "./MostPopularItem";
-import Lastmonth from "./Lastmonth";
 
 export default function Dashboard() {
   const url = "http://localhost:8000/api/sales";
@@ -77,7 +76,6 @@ export default function Dashboard() {
       .catch((error) => {
         console.log(error);
       });
-    console.log(previousMonth);
   }, []);
 
   // Compute Total Gross And Total Quantity of Previous Month
@@ -90,7 +88,7 @@ export default function Dashboard() {
       setLastMonthTotalSales(totalItemCounter);
       setLastMonthGross(grossCounter);
     });
-  }, []);
+  }, [previousMonth]);
 
   return (
     <div>

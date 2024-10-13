@@ -9,7 +9,6 @@ export default function WeeklyIncome({
   week3Difference,
   week4Difference,
 }) {
-  let result;
   return (
     <div className="mt-2">
       <div className="mt-2 flex gap-4">
