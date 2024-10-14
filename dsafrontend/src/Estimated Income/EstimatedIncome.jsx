@@ -115,9 +115,6 @@ export default function EstimatedIncome() {
     <div className="flex-wrap">
       <div className="flex">
         <div>
-          <button onClick={() => console.log(lastMonthSalesPerWeek)}>
-            Log last month Weekly
-          </button>
           <h1 className="text-[2.2vw]">Weekly Insight</h1>
           <span className="text-gray-600">Last 28 Days</span>
         </div>

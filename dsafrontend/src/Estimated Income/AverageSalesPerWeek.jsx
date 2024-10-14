@@ -63,7 +63,7 @@ export default function AverageSalesPerWeek() {
               : `+₱${weeklyAverage - lastMonthWeeklyAverage}`}
           </span>
           <span className="py-1 text-[0.9vw] font-medium text-gray-500">
-            from last week You are Doing Great!
+            Compared to Last Month
           </span>
         </div>
       </div>

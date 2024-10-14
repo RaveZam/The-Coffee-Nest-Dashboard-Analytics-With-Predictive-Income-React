@@ -30,7 +30,7 @@ export default function TotalSales({
     <div>
       <div className="flex">
         <div>
-          <h1 className="text-[2.2vw] font-semibold">Dashboard</h1>
+          <h1 className="font-mediu text-[2.2vw]">Dashboard</h1>
           <span className="text-gray-600">Last 28 Days</span>
         </div>
         <div className="ml-auto flex items-center">

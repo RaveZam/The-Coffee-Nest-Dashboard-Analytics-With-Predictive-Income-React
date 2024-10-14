@@ -8,7 +8,7 @@ import { GlobalDataProvider } from "./contentarea/Contentarea";
 function App() {
   const [navigate, navigateTo] = useState("dashboard");
   return (
-    <div>
+    <div className="overflow-hidden">
       <Header />
       <div className="mr-12 flex">
         <GlobalDataProvider>

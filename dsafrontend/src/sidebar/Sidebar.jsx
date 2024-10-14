@@ -9,18 +9,19 @@ export default function Sidebar({ navigateTo }) {
   const [activeButton, setActiveButton] = useState("Dashboard");
 
   return (
-    <div className="mr-8 w-80 whitespace-nowrap py-8 pl-8">
-      <ul className="w-full cursor-pointer space-y-2">
+    <div className="mr-8 w-1/6 whitespace-nowrap py-4 pl-8">
+      <h2 className="mb-2 mt-4 opacity-60">General</h2>
+      <ul className="w-full cursor-pointer space-y-1">
         <li
           onClick={() => navigateTo("Dashboard") & setActiveButton("Dashboard")}
-          className={`${activeButton === "Dashboard" ? bgcolor : ""} ${"hover:text-prof-blue flex rounded-lg p-4 pr-12 transition duration-300 hover:bg-[#E9EFFF]"}`}
+          className={`${activeButton === "Dashboard" ? bgcolor : ""} ${"flex rounded-lg p-4 pr-12 transition duration-300 hover:bg-[#E9EFFF] hover:text-prof-blue"}`}
         >
           <FaHome className="mr-4 translate-y-1 scale-150" />
           Dashboard
         </li>
         <li
           onClick={() => navigateTo("Products") & setActiveButton("Products")}
-          className={`${activeButton === "Products" ? bgcolor : ""} ${"hover:text-prof-blue flex rounded-lg p-4 pr-12 transition duration-300 hover:bg-[#E9EFFF]"}`}
+          className={`${activeButton === "Products" ? bgcolor : ""} ${"flex rounded-lg p-4 pr-12 transition duration-300 hover:bg-[#E9EFFF] hover:text-prof-blue"}`}
         >
           <BsBox className="mr-4 translate-y-1 scale-150" />
           Products
@@ -29,7 +30,7 @@ export default function Sidebar({ navigateTo }) {
           onClick={() =>
             navigateTo("EstimatedIncome") & setActiveButton("EstimatedIncome")
           }
-          className={`${activeButton === "EstimatedIncome" ? bgcolor : ""} ${"hover:text-prof-blue flex rounded-lg p-4 pr-12 transition duration-300 hover:bg-[#E9EFFF]"}`}
+          className={`${activeButton === "EstimatedIncome" ? bgcolor : ""} ${"flex rounded-lg p-4 pr-12 transition duration-300 hover:bg-[#E9EFFF] hover:text-prof-blue"}`}
         >
           <MdOutlineAttachMoney className="mr-4 translate-y-1 scale-150" />
           Weekly Insights

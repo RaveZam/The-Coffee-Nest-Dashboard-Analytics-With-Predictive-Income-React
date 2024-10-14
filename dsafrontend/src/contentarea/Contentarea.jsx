@@ -59,7 +59,7 @@ export default function Contentarea({ navigate }) {
     }
   }
   return (
-    <div className="z-10 mr-4 mt-4 w-full flex-wrap">
+    <div className="z-10 mt-4 w-5/6">
       {/* {isLoading ? (
         <div
           style={{

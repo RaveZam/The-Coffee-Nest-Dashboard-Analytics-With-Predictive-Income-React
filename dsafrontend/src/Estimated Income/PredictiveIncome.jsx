@@ -55,7 +55,7 @@ export default function PredictiveIncome({
       <div className="flex-col rounded-2xl border-2 border-gray-200 bg-white p-4 drop-shadow-sm">
         <h1 className="mb-2 font-bold"> Estimated Gross Sales Next Month </h1>
         <div className="flex">
-          <h2 className="text-prof-blue text-[1.5vw] font-semibold">
+          <h2 className="text-[1.5vw] font-semibold text-prof-blue">
             ₱{formattedGross}
           </h2>
           {isNaN(monthlyIncrease) ? (
@@ -74,7 +74,7 @@ export default function PredictiveIncome({
             : `+₱${(NextMonthGross - grosssales).toFixed(2)}`}
         </span>
         <span className="py-1 text-[0.9vw] font-medium text-gray-500">
-          more from Current Month
+          Compared to Last Month
         </span>
       </div>
     </div>
