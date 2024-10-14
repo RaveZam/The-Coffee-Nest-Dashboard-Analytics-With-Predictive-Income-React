@@ -4,7 +4,7 @@ import { PiCoffeeBeanFill } from "react-icons/pi";
 
 export default function Header() {
   return (
-    <div className="flex w-full place-content-between border-b-2 border-gray-300 bg-gray-50">
+    <div className="flex h-[10vh] w-full justify-between border-b-2 border-gray-300 bg-gray-50 drop-shadow-sm">
       <div className="ml-8 flex items-center">
         <h1 className="flex text-[1.8vw]">
           <PiCoffeeBeanFill className="mr-4 mt-2 scale-150" />
@@ -15,7 +15,7 @@ export default function Header() {
         <CiSearch className="h-6 w-6 hover:cursor-pointer" />
         <IoMdNotificationsOutline className="h-6 w-6 hover:cursor-pointer" />
       </div>
-      <div className="m-2 flex w-1/6 items-center border-l-2 border-gray-200 p-2">
+      <div className="m-2 flex w-[15vw] items-center border-l-2 border-gray-200 p-2">
         <img
           className="ml-4 h-12 w-12 rounded-full"
           src="./images/Flower.jfif"

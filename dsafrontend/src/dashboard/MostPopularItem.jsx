@@ -23,7 +23,7 @@ export default function MostPopularItem() {
   return (
     <div className="rounded-2xl border-2 p-4">
       <div className="flex">
-        <h1 className="font-semibold">Most Popular Item</h1>
+        <h1 className="font-medium">Most Popular Item</h1>
         <MdOutlineInfo className="ml-auto flex scale-100 opacity-60" />
       </div>
 

@@ -24,12 +24,16 @@ export default function PieChartComponent() {
   }, []);
 
   return (
-    <div className="mt-4 h-[400px] w-1/2 rounded-2xl border-2 border-gray-200 p-4 drop-shadow-sm">
+    <div className="mt-4 h-[400px] w-[70vh] rounded-2xl border-2 border-gray-200 p-4 drop-shadow-sm">
       <h1 className="flex font-medium">
         Most Sold type of food
         <MdMoreHoriz className="ml-auto mr-1 mt-1 scale-150" />
       </h1>
-      <ResponsiveContainer width="100%" height="100%" className="pb-8">
+      <ResponsiveContainer
+        width="100%"
+        height="100%"
+        className="pb-8 text-[0.9vw]"
+      >
         <BarChart className="mt-2 translate-x-[-1rem]" data={sortedCategory}>
           <XAxis dataKey="category" stroke="#3661EB" />
           <YAxis />

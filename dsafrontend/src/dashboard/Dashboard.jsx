@@ -117,7 +117,7 @@ export default function Dashboard() {
           itemsSold={itemsSold}
         />
       </div>
-      <div className="flex gap-4">
+      <div className="flex gap-x-4">
         <LineGraph resultArray={resultArray} />
         <PieChartComponent />
       </div>

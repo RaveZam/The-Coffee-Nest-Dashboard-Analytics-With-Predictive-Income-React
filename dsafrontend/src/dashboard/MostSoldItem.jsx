@@ -13,8 +13,8 @@ export default function MostSoldItem() {
       });
   }, []);
   return (
-    <div className="m-4 mt-8">
-      <h1 className="text-[1.5vw] font-bold">Top Products</h1>
+    <div className="mt-4">
+      <h1 className="text-[1.5vw] font-medium">Top Products</h1>
       <div className="mt-4 flex-col rounded-lg border-2 border-gray-200 bg-white drop-shadow-md">
         <div className="flex w-full flex-1 border-b-2 border-b-gray-200 bg-gray-50 py-4">
           <h1 className="flex-1 pl-16 font-bold">Product</h1>

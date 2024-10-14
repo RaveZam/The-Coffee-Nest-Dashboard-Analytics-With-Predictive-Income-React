@@ -7,10 +7,12 @@ import { GlobalDataProvider } from "./contentarea/Contentarea";
 
 function App() {
   const [navigate, navigateTo] = useState("dashboard");
+
   return (
-    <div className="overflow-hidden">
+    <div className="h-screen overflow-hidden">
+      {/* hides scroll  */}
       <Header />
-      <div className="mr-12 flex">
+      <div className="flex">
         <GlobalDataProvider>
           <Sidebar navigateTo={navigateTo} />
           <Contentarea navigate={navigate} />

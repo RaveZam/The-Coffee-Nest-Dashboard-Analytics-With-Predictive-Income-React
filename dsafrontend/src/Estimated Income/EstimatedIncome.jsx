@@ -138,7 +138,7 @@ export default function EstimatedIncome() {
       />
       <div className="flex gap-4">
         <WeeklyBarChart salesPerWeek={salesPerWeek} />
-        <div className="w-full">
+        <div className="m-4 ml-[-16px] w-full">
           <PredictiveIncome
             week1Difference={week1Difference}
             week2Difference={week2Difference}

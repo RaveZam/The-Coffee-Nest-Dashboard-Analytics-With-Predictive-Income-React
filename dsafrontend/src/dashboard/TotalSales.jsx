@@ -47,7 +47,7 @@ export default function TotalSales({
         {/* // */}
         <div className="bg-gray-0 flex w-1/2 flex-col rounded-2xl border-2 border-gray-200 bg-white px-2 py-2 transition-all">
           <div className="flex-col rounded-2xl border-2 border-gray-200 bg-white p-4 drop-shadow-sm">
-            <h1 className="mb-1 flex font-semibold">
+            <h1 className="mb-1 flex font-medium">
               Total Gross Sales <MdMoreHoriz className="ml-auto scale-150" />
             </h1>
 
@@ -57,14 +57,14 @@ export default function TotalSales({
                   <SmallLoading />
                 </div>
               ) : TotalGrossDifference > 0 ? (
-                <h2 className="flex text-2xl font-semibold text-prof-blue">
+                <h2 className="mt-1 flex text-2xl font-semibold text-prof-blue">
                   <span className="animate-appearFromTop">
                     ₱{grosssales.toLocaleString()}
                   </span>
                   <IncreaseComponent value={TotalGrossDifference.toFixed(2)} />
                 </h2>
               ) : (
-                <h2 className="flex text-2xl font-semibold text-prof-blue">
+                <h2 className="mt-1 flex text-2xl font-semibold text-prof-blue">
                   <span className="animate-appearFromTop">
                     ${grosssales.toLocaleString()}
                   </span>
@@ -97,7 +97,7 @@ export default function TotalSales({
         {/* // */}
         <div className="bg-gray-0 flex w-1/2 flex-col rounded-2xl border-2 border-gray-200 bg-white px-2 py-2 transition-all duration-200">
           <div className="flex-col rounded-2xl border-2 border-gray-200 bg-white p-4 drop-shadow-sm">
-            <h1 className="mb-1 flex font-semibold">
+            <h1 className="mb-1 flex font-medium">
               Total Items Sold <MdMoreHoriz className="ml-auto scale-150" />
             </h1>
             <div className="flex">
@@ -106,9 +106,8 @@ export default function TotalSales({
                   <SmallLoading />
                 </div>
               ) : TotalSalesDifference > 0 ? (
-                <h2 className="flex animate-appearFromTop text-2xl font-semibold text-prof-blue">
+                <h2 className="mt-1 flex animate-appearFromTop text-2xl font-semibold text-prof-blue">
                   {itemsSold}
-
                   <span className="ml-1 text-[0.9vw] text-gray-700">
                     Products
                   </span>

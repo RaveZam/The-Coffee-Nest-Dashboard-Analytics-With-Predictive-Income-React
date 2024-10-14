@@ -55,15 +55,34 @@ export default function PredictiveIncome({
       <div className="flex-col rounded-2xl border-2 border-gray-200 bg-white p-4 drop-shadow-sm">
         <h1 className="mb-2 font-bold"> Estimated Gross Sales Next Month </h1>
         <div className="flex">
-          <h2 className="text-[1.5vw] font-semibold text-prof-blue">
+          {/* <h2 className="text-[1.5vw] font-semibold text-prof-blue">
             ₱{formattedGross}
           </h2>
           {isNaN(monthlyIncrease) ? (
             <SmallLoading />
           ) : monthlyIncrease > 0 ? (
             <IncreaseComponent value={monthlyIncrease.toFixed(2)} />
-          ) : (
+          ) : ( 
             <DecreaseComponent value={monthlyIncrease.toFixed(2)} />
+          )} */}
+          {isNaN(monthlyIncrease) ? (
+            <div className="mt-2">
+              <SmallLoading />
+            </div>
+          ) : monthlyIncrease > 0 ? (
+            <h2 className="mt-1 flex text-2xl font-semibold text-prof-blue">
+              <span className="animate-appearFromTop">
+                ₱{formattedGross.toLocaleString()}
+              </span>
+              <IncreaseComponent value={monthlyIncrease.toFixed(2)} />
+            </h2>
+          ) : (
+            <h2 className="mt-1 flex text-2xl font-semibold text-prof-blue">
+              <span className="animate-appearFromTop">
+                ${monthlyIncrease.toLocaleString()}
+              </span>
+              <DecreaseComponent value={monthlyIncrease.toFixed(2)} />
+            </h2>
           )}
         </div>
       </div>

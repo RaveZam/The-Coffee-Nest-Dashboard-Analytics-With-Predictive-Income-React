@@ -12,7 +12,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ["Work sans", "sans-serif"],
+        sans: ["inter", "sans-serif"],
         realsans: ["Work sans", "sans-serif"],
       },
       colors: {
