@@ -8,29 +8,29 @@ import PieChartComponent from "./PieChartComponent";
 import MostPopularItem from "./MostPopularItem";
 
 // Create the context for gross sales
-export const GrossSalesContext = createContext();
+// export const GrossSalesContext = createContext();
 
-export const GrossSalesProvider = ({ children }) => {
-  const [grosssales, setGrossSales] = useState(0.0);
+// export const GrossSalesProvider = ({ children }) => {
+//   const [grosssales, setGrossSales] = useState(0.0);
 
-  return (
-    <GrossSalesContext.Provider value={{ grosssales, setGrossSales }}>
-      {children}
-    </GrossSalesContext.Provider>
-  );
-};
+//   return (
+//     <GrossSalesContext.Provider value={{ grosssales, setGrossSales }}>
+//       {children}
+//     </GrossSalesContext.Provider>
+//   );
+// };
 
 export default function Dashboard() {
-  const url = "http://localhost:8000/api/sales";
   const [salesTable, setsalesTable] = useState([]);
   const [itemsSold, setItemsSold] = useState(0);
 
   // Access the grosssales state and setter from context
-  const { grosssales, setGrossSales } = useContext(GrossSalesContext);
+  // const { grosssales, setGrossSales } = useContext(GrossSalesContext);
+  const [grosssales, setGrossSales] = useState(0.0);
 
   useEffect(() => {
     axios
-      .get(url)
+      .get("http://localhost:8000/api/sales")
       .then((response) => {
         setsalesTable(response.data);
       })

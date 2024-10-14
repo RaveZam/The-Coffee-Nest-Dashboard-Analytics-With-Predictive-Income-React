@@ -3,6 +3,7 @@ import "./App.css";
 import Sidebar from "./sidebar/Sidebar";
 import Contentarea from "./contentarea/Contentarea";
 import Header from "./header/Header";
+import { GlobalDataProvider } from "./contentarea/Contentarea";
 
 function App() {
   const [navigate, navigateTo] = useState("dashboard");
@@ -10,8 +11,10 @@ function App() {
     <div>
       <Header />
       <div className="mr-12 flex">
-        <Sidebar navigateTo={navigateTo} />
-        <Contentarea navigate={navigate} />
+        <GlobalDataProvider>
+          <Sidebar navigateTo={navigateTo} />
+          <Contentarea navigate={navigate} />
+        </GlobalDataProvider>
       </div>
     </div>
   );

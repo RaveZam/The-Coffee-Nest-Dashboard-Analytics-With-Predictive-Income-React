@@ -1,13 +1,34 @@
-import { useEffect, useState } from "react";
-import Dashboard, { GrossSalesProvider } from "../dashboard/Dashboard";
+import { useEffect, useState, useContext, createContext } from "react";
+import Dashboard from "../dashboard/Dashboard";
 import Products from "../products/Products";
 import BouncingCircles from "../preloaders/BouncingCircles";
 import EstimatedIncome from "../Estimated Income/EstimatedIncome";
+
+export const GlobalDataContext = createContext();
+
+export const GlobalDataProvider = ({ children }) => {
+  const [AverageWeeklySales, setAverageWeeklySales] = useState(0);
+  const [salesPerWeek, setSalesPerWeek] = useState([0, 0, 0, 0]);
+
+  return (
+    <GlobalDataContext.Provider
+      value={{
+        AverageWeeklySales,
+        setAverageWeeklySales,
+        salesPerWeek,
+        setSalesPerWeek,
+      }}
+    >
+      {children}
+    </GlobalDataContext.Provider>
+  );
+};
 
 export default function Contentarea({ navigate }) {
   const [isLoading, setIsLoading] = useState(true);
   const [preloaderOpacity, setPreloaderOpacity] = useState(1);
   const [contentOpacity, setContentOpacity] = useState(0);
+  const { salesPerWeek } = useContext(GlobalDataContext);
 
   useEffect(() => {
     setTimeout(() => {
@@ -21,26 +42,19 @@ export default function Contentarea({ navigate }) {
   }, []);
 
   function renderContent() {
-    return (
-      <GrossSalesProvider>
-        {(() => {
-          switch (navigate) {
-            case "Dashboard":
-              return <Dashboard />;
-            case "Products":
-              return <Products />;
-            case "EstimatedIncome":
-              return <EstimatedIncome />;
-            default:
-              return <Dashboard />;
-          }
-        })()}
-      </GrossSalesProvider>
-    );
+    switch (navigate) {
+      case "Dashboard":
+        return <Dashboard />;
+      case "Products":
+        return <Products />;
+      case "EstimatedIncome":
+        return <EstimatedIncome />;
+      default:
+        return <Dashboard />;
+    }
   }
-
   return (
-    <div className="z-10 mr-4 mt-4 w-full">
+    <div className="z-10 mr-4 mt-4 w-full flex-wrap">
       {/* {isLoading ? (
         <div
           style={{

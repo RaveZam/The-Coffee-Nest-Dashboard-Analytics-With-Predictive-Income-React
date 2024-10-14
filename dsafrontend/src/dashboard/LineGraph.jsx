@@ -15,9 +15,10 @@ export default function LineGraph({ resultArray }) {
         Items Sold In The Past 28 Days
         <MdMoreHoriz className="ml-auto mr-6 mt-1 scale-150" />
       </h1>
+
       <LineChart
         className="translate-x-[-1.5rem]"
-        width={700}
+        width={1000}
         height={350}
         data={resultArray}
         margin={{ top: 5, right: 20, bottom: 5, left: 0 }}

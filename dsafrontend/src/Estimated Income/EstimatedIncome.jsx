@@ -1,6 +1,6 @@
 import axios from "axios";
 import { space } from "postcss/lib/list";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaArrowTrendUp } from "react-icons/fa6";
 import { FaArrowTrendDown } from "react-icons/fa6";
 import { LineChart } from "recharts";
@@ -11,8 +11,12 @@ import PredictiveIncome from "./PredictiveIncome";
 import AverageSalesPerWeek from "./AverageSalesPerWeek";
 import { IoIosCalendar } from "react-icons/io";
 import { RiArrowDropDownLine } from "react-icons/ri";
+import { GlobalDataContext } from "../contentarea/Contentarea";
 
 export default function EstimatedIncome() {
+  // const [salesPerWeek, setSalesPerWeek] = useState([0, 0, 0, 0]); SalesPerWeek
+  const { salesPerWeek, setSalesPerWeek } = useContext(GlobalDataContext);
+
   const [salesPerDay, setsalesPerDay] = useState([]);
   const [previousMonth, setPreviousMonths] = useState([]);
 
@@ -60,7 +64,6 @@ export default function EstimatedIncome() {
   const [lastMonthSalesPerWeek, setLastMonthSalesPerWeek] = useState([
     0, 0, 0, 0,
   ]);
-  const [salesPerWeek, setSalesPerWeek] = useState([0, 0, 0, 0]);
 
   // Utility function to calculate weekly sales
   const calculateWeeklySales = (data) => {

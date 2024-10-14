@@ -1,9 +1,10 @@
 import IncreaseComponent from "../components/IncreaseComponent";
 import DecreaseComponent from "../components/DecreaseComponent";
 import SmallLoading from "../preloaders/SmallLoading";
+import axios from "axios";
 
 import { useEffect, useState, useContext } from "react";
-import { GrossSalesContext } from "../dashboard/Dashboard";
+// import { GrossSalesContext } from "../dashboard/Dashboard";
 
 export default function PredictiveIncome({
   week1Difference,
@@ -11,7 +12,19 @@ export default function PredictiveIncome({
   week3Difference,
   week4Difference,
 }) {
-  const { grosssales } = useContext(GrossSalesContext);
+  const [grosssales, setGrossSales] = useState([]);
+  const [GrossTable, setGrossTable] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/sales")
+      .then((response) => {
+        setGrossTable(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+  // const { grosssales } = useContext(GrossSalesContext);
   const [NextMonthGross, setNextMonthGross] = useState(0);
   const [monthlyIncrease, setMonthlyIncrease] = useState();
   useEffect(() => {
@@ -21,6 +34,13 @@ export default function PredictiveIncome({
     let decimalavg = avg / 100;
     setNextMonthGross(grosssales * (1 + decimalavg));
     setMonthlyIncrease(((NextMonthGross - grosssales) / grosssales) * 100);
+
+    let grossCounter = 0;
+    GrossTable.forEach((sale) => {
+      const price = parseInt(sale.total_price);
+      grossCounter += price;
+    });
+    setGrossSales(grossCounter);
   }, [
     week1Difference,
     week2Difference,
