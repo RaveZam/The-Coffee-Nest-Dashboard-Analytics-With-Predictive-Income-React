@@ -61,9 +61,7 @@ export default function EstimatedIncome() {
   //   setSalesPerWeek(weeks);
   // }, [salesPerDay]);
   //Gpt Version Below --
-  const [lastMonthSalesPerWeek, setLastMonthSalesPerWeek] = useState([
-    0, 0, 0, 0,
-  ]);
+  //this is the value i need to Log
 
   // Utility function to calculate weekly sales
   const calculateWeeklySales = (data) => {
@@ -75,6 +73,9 @@ export default function EstimatedIncome() {
     });
     return weeks;
   };
+
+  const { lastMonthSalesPerWeek, setLastMonthSalesPerWeek } =
+    useContext(GlobalDataContext);
 
   useEffect(() => {
     setLastMonthSalesPerWeek(calculateWeeklySales(previousMonth));
@@ -114,6 +115,9 @@ export default function EstimatedIncome() {
     <div className="flex-wrap">
       <div className="flex">
         <div>
+          <button onClick={() => console.log(lastMonthSalesPerWeek)}>
+            Log last month Weekly
+          </button>
           <h1 className="text-[2.2vw]">Weekly Insight</h1>
           <span className="text-gray-600">Last 28 Days</span>
         </div>

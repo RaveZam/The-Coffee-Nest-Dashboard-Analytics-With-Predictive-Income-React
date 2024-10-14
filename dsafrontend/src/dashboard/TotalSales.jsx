@@ -57,14 +57,14 @@ export default function TotalSales({
                   <SmallLoading />
                 </div>
               ) : TotalGrossDifference > 0 ? (
-                <h2 className="text-prof-blue flex text-2xl font-semibold">
+                <h2 className="flex text-2xl font-semibold text-prof-blue">
                   <span className="animate-appearFromTop">
-                    ${grosssales.toLocaleString()}
+                    ₱{grosssales.toLocaleString()}
                   </span>
                   <IncreaseComponent value={TotalGrossDifference.toFixed(2)} />
                 </h2>
               ) : (
-                <h2 className="text-prof-blue flex text-2xl font-semibold">
+                <h2 className="flex text-2xl font-semibold text-prof-blue">
                   <span className="animate-appearFromTop">
                     ${grosssales.toLocaleString()}
                   </span>
@@ -106,7 +106,7 @@ export default function TotalSales({
                   <SmallLoading />
                 </div>
               ) : TotalSalesDifference > 0 ? (
-                <h2 className="animate-appearFromTop text-prof-blue flex text-2xl font-semibold">
+                <h2 className="flex animate-appearFromTop text-2xl font-semibold text-prof-blue">
                   {itemsSold}
 
                   <span className="ml-1 text-[0.9vw] text-gray-700">

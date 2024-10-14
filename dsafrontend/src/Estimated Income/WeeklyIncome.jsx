@@ -16,7 +16,7 @@ export default function WeeklyIncome({
           <div className="flex-col rounded-2xl border-2 border-gray-200 bg-white p-4 drop-shadow-sm">
             <h1 className="mb-2 font-bold"> Week 1 Sales </h1>
             <div className="flex">
-              <h2 className="text-prof-blue font-semibold">
+              <h2 className="font-semibold text-prof-blue">
                 ₱{salesPerWeek[0]}
               </h2>
               {isNaN(week1Difference) ? (
@@ -53,7 +53,7 @@ export default function WeeklyIncome({
           <div className="flex-col rounded-2xl border-2 border-gray-200 bg-white p-4 drop-shadow-sm">
             <h1 className="mb-2 font-bold"> Week 2 Sales </h1>
             <div className="flex">
-              <h2 className="text-prof-blue font-semibold">
+              <h2 className="font-semibold text-prof-blue">
                 ₱{salesPerWeek[1]}
               </h2>
               {isNaN(week2Difference) ? (
@@ -81,7 +81,7 @@ export default function WeeklyIncome({
           <div className="flex-col rounded-2xl border-2 border-gray-200 bg-white p-4 drop-shadow-sm">
             <h1 className="mb-2 font-bold"> Week 3 Sales </h1>
             <div className="flex">
-              <h2 className="text-prof-blue font-semibold">
+              <h2 className="font-semibold text-prof-blue">
                 ₱{salesPerWeek[2]}
               </h2>
               {isNaN(week3Difference) ? (
@@ -109,7 +109,7 @@ export default function WeeklyIncome({
           <div className="flex-col rounded-2xl border-2 border-gray-200 bg-white p-4 drop-shadow-sm">
             <h1 className="mb-2 font-bold"> Week 4 Sales </h1>
             <div className="flex">
-              <h2 className="text-prof-blue font-semibold">
+              <h2 className="font-semibold text-prof-blue">
                 ₱{salesPerWeek[3]}
               </h2>
               {isNaN(week4Difference) ? (

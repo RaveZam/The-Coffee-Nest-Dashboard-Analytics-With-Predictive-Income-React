@@ -9,6 +9,9 @@ export const GlobalDataContext = createContext();
 export const GlobalDataProvider = ({ children }) => {
   const [AverageWeeklySales, setAverageWeeklySales] = useState(0);
   const [salesPerWeek, setSalesPerWeek] = useState([0, 0, 0, 0]);
+  const [lastMonthSalesPerWeek, setLastMonthSalesPerWeek] = useState([
+    0, 0, 0, 0,
+  ]);
 
   return (
     <GlobalDataContext.Provider
@@ -17,6 +20,8 @@ export const GlobalDataProvider = ({ children }) => {
         setAverageWeeklySales,
         salesPerWeek,
         setSalesPerWeek,
+        lastMonthSalesPerWeek,
+        setLastMonthSalesPerWeek,
       }}
     >
       {children}
