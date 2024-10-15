@@ -23,6 +23,25 @@ export default function PieChartComponent() {
       });
   }, []);
 
+  const CustomBarShape = (props) => {
+    const { fill, x, y, width, height } = props;
+
+    // Calculate the corner radius
+    const radius = 5; // Adjust this value as needed
+
+    return (
+      <path
+        d={`M${x + radius},${y} 
+           H${x + width - radius} 
+           Q${x + width},${y},${x + width},${y + radius} 
+           V${y + height} 
+           H${x} 
+           V${y + radius} 
+           Q${x},${y},${x + radius},${y}`} // Create a rounded top shape
+        fill={fill}
+      />
+    );
+  };
   return (
     <div className="mt-4 h-[400px] w-[70vh] rounded-2xl border-2 border-gray-200 p-4">
       <h1 className="flex font-medium">
@@ -44,6 +63,7 @@ export default function PieChartComponent() {
             dataKey="category_count"
             fill="#3661EB"
             barSize={40}
+            shape={<CustomBarShape />}
           />
         </BarChart>
       </ResponsiveContainer>
