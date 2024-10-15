@@ -12,6 +12,7 @@ import AverageSalesPerWeek from "./AverageSalesPerWeek";
 import { IoIosCalendar } from "react-icons/io";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { GlobalDataContext } from "../contentarea/Contentarea";
+import { Calendar } from "../components/Calendar";
 
 export default function EstimatedIncome() {
   // const [salesPerWeek, setSalesPerWeek] = useState([0, 0, 0, 0]); SalesPerWeek
@@ -118,15 +119,7 @@ export default function EstimatedIncome() {
           <h1 className="text-[2.2vw]">Weekly Insight</h1>
           <span className="text-gray-600">Last 28 Days</span>
         </div>
-        <div className="ml-auto flex items-center">
-          <div className="rounded-2xl border-2 border-gray-200 bg-gray-50 p-4">
-            <h1 className="flex text-[0.8vw]">
-              <IoIosCalendar className="mr-4 mt-1 scale-150" />
-              September 3 - October 1
-              <RiArrowDropDownLine className="ml-2 mt-1 scale-150" />
-            </h1>
-          </div>
-        </div>
+        <Calendar />
       </div>
       <WeeklyIncome
         week1Difference={week1Difference}

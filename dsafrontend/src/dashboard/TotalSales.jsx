@@ -1,12 +1,11 @@
 import MostPopularItem from "./MostPopularItem";
 import { MdMoreHoriz } from "react-icons/md";
-import { IoIosCalendar } from "react-icons/io";
-import { RiArrowDropDownLine } from "react-icons/ri";
 import { IoArrowUpCircleOutline } from "react-icons/io5";
 import IncreaseComponent from "../components/IncreaseComponent";
 import DecreaseComponent from "../components/DecreaseComponent";
 import SmallLoading from "../preloaders/SmallLoading";
 import { useState, useEffect } from "react";
+import { Calendar } from "../components/Calendar";
 
 export default function TotalSales({
   grosssales,
@@ -33,15 +32,7 @@ export default function TotalSales({
           <h1 className="font-mediu text-[2.2vw]">Dashboard</h1>
           <span className="text-gray-600">Last 28 Days</span>
         </div>
-        <div className="ml-auto flex items-center">
-          <div className="rounded-2xl border-2 border-gray-200 bg-white p-4">
-            <h1 className="flex text-[0.8vw]">
-              <IoIosCalendar className="mr-4 mt-1 scale-150" />
-              September 3 - October 1
-              <RiArrowDropDownLine className="ml-2 mt-1 scale-150" />
-            </h1>
-          </div>
-        </div>
+        <Calendar />
       </div>
       <div className="mt-4 flex gap-4">
         {/* // */}
@@ -64,7 +55,7 @@ export default function TotalSales({
                   <IncreaseComponent value={TotalGrossDifference.toFixed(2)} />
                 </h2>
               ) : (
-                <h2 className="mt-1 flex text-2xl font-semibold text-prof-blue">
+                <h2 className="mt-1 flex text-2xl font-semibold">
                   <span className="animate-appearFromTop">
                     ${grosssales.toLocaleString()}
                   </span>
@@ -106,8 +97,8 @@ export default function TotalSales({
                   <SmallLoading />
                 </div>
               ) : TotalSalesDifference > 0 ? (
-                <h2 className="mt-1 flex animate-appearFromTop text-2xl font-semibold text-prof-blue">
-                  {itemsSold}
+                <h2 className="mt-1 flex animate-appearFromTop text-2xl text-prof-blue">
+                  <span className="mr-1 font-bold">{itemsSold}</span>
                   <span className="ml-1 text-[0.9vw] text-gray-700">
                     Products
                   </span>

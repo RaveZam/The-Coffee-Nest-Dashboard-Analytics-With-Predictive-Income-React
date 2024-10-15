@@ -38,12 +38,12 @@ export default function PieChartComponent() {
           <XAxis dataKey="category" stroke="#3661EB" />
           <YAxis />
           <Tooltip />
-          <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+          <CartesianGrid stroke="#ccc" />
           <Bar
             label={{ position: "top" }}
             dataKey="category_count"
             fill="#3661EB"
-            barSize={30}
+            barSize={40}
           />
         </BarChart>
       </ResponsiveContainer>

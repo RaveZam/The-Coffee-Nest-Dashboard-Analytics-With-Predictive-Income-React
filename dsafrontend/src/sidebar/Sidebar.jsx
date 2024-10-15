@@ -49,11 +49,11 @@ export default function Sidebar({ navigateTo }) {
       </div>
       <div className="ml-4 mt-auto flex">
         <ul>
-          <li className="flex p-4 text-[0.9vw]">
+          <li className="flex p-4 text-[0.9rem]">
             <IoSettingsOutline className="mr-2 translate-y-[3px] scale-150" />
             Settings
           </li>
-          <li className="flex p-4 text-[0.9vw]">
+          <li className="flex p-4 text-[0.9rem]">
             <IoMdHelpCircleOutline className="mr-2 translate-y-[3px] scale-150" />
             Help and Support
           </li>
