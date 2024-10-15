@@ -46,7 +46,7 @@ export default function TotalSales({
       <div className="mt-4 flex gap-4">
         {/* // */}
         <div className="bg-gray-0 flex w-1/2 flex-col rounded-2xl border-2 border-gray-200 bg-white px-2 py-2 transition-all">
-          <div className="flex-col rounded-2xl border-2 border-gray-200 bg-white p-4 drop-shadow-sm">
+          <div className="flex-col rounded-2xl border-2 border-gray-200 bg-white p-4">
             <h1 className="mb-1 flex font-medium">
               Total Gross Sales <MdMoreHoriz className="ml-auto scale-150" />
             </h1>
@@ -96,7 +96,7 @@ export default function TotalSales({
         </div>
         {/* // */}
         <div className="bg-gray-0 flex w-1/2 flex-col rounded-2xl border-2 border-gray-200 bg-white px-2 py-2 transition-all duration-200">
-          <div className="flex-col rounded-2xl border-2 border-gray-200 bg-white p-4 drop-shadow-sm">
+          <div className="flex-col rounded-2xl border-2 border-gray-200 bg-white p-4">
             <h1 className="mb-1 flex font-medium">
               Total Items Sold <MdMoreHoriz className="ml-auto scale-150" />
             </h1>

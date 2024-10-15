@@ -108,7 +108,7 @@ export default function Dashboard() {
   }, [previousMonth]);
 
   return (
-    <div>
+    <div className="my-4">
       <div>
         <TotalSales
           lastMonthGross={lastMonthGross}
@@ -117,12 +117,12 @@ export default function Dashboard() {
           itemsSold={itemsSold}
         />
       </div>
-      <div className="flex gap-x-4">
+      <div className="flex gap-x-4 pb-4">
         <LineGraph resultArray={resultArray} />
         <PieChartComponent />
       </div>
       <MostSoldItem />
-      <MostSoldCategoryItem />
+      {/* <MostSoldCategoryItem /> */}
     </div>
   );
 }

@@ -59,7 +59,7 @@ export default function Contentarea({ navigate }) {
     }
   }
   return (
-    <div className="mt-4 h-[90vh] w-5/6 overflow-y-auto scroll-smooth pr-8">
+    <div className="h-[90vh] w-full overflow-y-scroll scroll-smooth pr-8 will-change-scroll">
       {isLoading ? (
         <div
           style={{

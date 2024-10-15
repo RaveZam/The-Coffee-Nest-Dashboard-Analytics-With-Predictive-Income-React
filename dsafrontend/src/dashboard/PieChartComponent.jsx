@@ -24,7 +24,7 @@ export default function PieChartComponent() {
   }, []);
 
   return (
-    <div className="mt-4 h-[400px] w-[70vh] rounded-2xl border-2 border-gray-200 p-4 drop-shadow-sm">
+    <div className="mt-4 h-[400px] w-[70vh] rounded-2xl border-2 border-gray-200 p-4">
       <h1 className="flex font-medium">
         Most Sold type of food
         <MdMoreHoriz className="ml-auto mr-1 mt-1 scale-150" />

@@ -112,7 +112,7 @@ export default function EstimatedIncome() {
   }, [salesPerDay]);
 
   return (
-    <div className="flex-wrap">
+    <div className="mt-4 flex-wrap">
       <div className="flex">
         <div>
           <h1 className="text-[2.2vw]">Weekly Insight</h1>

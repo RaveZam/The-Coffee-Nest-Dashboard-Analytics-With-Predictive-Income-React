@@ -28,26 +28,22 @@ export default function MostPopularItem() {
       </div>
 
       <div className="mt-4 flex gap-4">
-        <div className="h- w-2/4 whitespace-nowrap rounded-2xl border-2 border-gray-200 p-4 text-[0.8vw]">
-          <h1 className="flex">
-            <h1 className="flex font-semibold">1st</h1>
-            <FaMedal className="mx-1 mt-1 text-yellow-400" />
-            {sortedArray[0].product.product_name}
-          </h1>
+        <div className="flex w-2/4 whitespace-nowrap rounded-2xl border-2 border-gray-200 p-4 text-[0.8vw]">
+          <h1 className="flex font-semibold">1st</h1>
+          <FaMedal className="mx-1 mt-1 text-yellow-400" />
+          {sortedArray[0].product.product_name}
         </div>
-        <div className="h- w-2/4 whitespace-nowrap rounded-2xl border-2 border-gray-200 p-4 text-[0.8vw]">
-          <h1 className="flex">
-            <h1 className="mr-1 flex font-semibold">2nd</h1>
-            <FaMedal className="mx-1 mt-1 text-gray-400" />
-            {sortedArray[1].product.product_name}
-          </h1>
+        <div className="flex w-2/4 whitespace-nowrap rounded-2xl border-2 border-gray-200 p-4 text-[0.8vw]">
+          <h1 className="mr-1 flex font-semibold">2nd</h1>
+          <FaMedal className="mx-1 mt-1 text-gray-400" />
+
+          {sortedArray[1].product.product_name}
         </div>
-        <div className="h- w-2/4 whitespace-nowrap rounded-2xl border-2 border-gray-200 p-4 text-[0.8vw]">
-          <h1 className="flex">
-            <h1 className="mr-1 flex font-semibold">3rd</h1>
-            <FaMedal className="mx-1 mt-1 text-amber-900" />
-            {sortedArray[2].product.product_name}
+        <div className="flex w-2/4 whitespace-nowrap rounded-2xl border-2 border-gray-200 p-4 text-[0.8vw]">
+          <h1 className="mr-1 flex whitespace-nowrap font-semibold">
+            3rd <FaMedal className="mx-1 mt-1 text-amber-900" />
           </h1>
+          {sortedArray[2].product.product_name}
         </div>
       </div>
     </div>
