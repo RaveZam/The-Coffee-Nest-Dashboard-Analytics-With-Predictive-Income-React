@@ -2,6 +2,10 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      dropShadow: {
+        experiment: "0 12px 8px   rgba(0,0,0,0.1)",
+      },
+
       animation: {
         appearFromTop: "appearFromTop 1s cubic-bezier(0.68, -0.55, 0.27, 1.55)", // Adjust easing here
       },
