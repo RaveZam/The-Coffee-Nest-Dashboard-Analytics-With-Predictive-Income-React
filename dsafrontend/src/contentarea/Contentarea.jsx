@@ -3,6 +3,7 @@ import Dashboard from "../dashboard/Dashboard";
 import Products from "../products/Products";
 import BouncingCircles from "../preloaders/BouncingCircles";
 import EstimatedIncome from "../Estimated Income/EstimatedIncome";
+import PointOfSalesMainJub from "../Point of Sales/PointofSalesMainHub";
 
 export const GlobalDataContext = createContext();
 
@@ -46,18 +47,17 @@ export default function Contentarea({ navigate }) {
     }, 2000);
   }, []);
 
+  const contentComponents = {
+    SalesPoint: <PointOfSalesMainJub />,
+    Dashboard: <Dashboard />,
+    Products: <Products />,
+    EstimatedIncome: <EstimatedIncome />,
+  };
+
   function renderContent() {
-    switch (navigate) {
-      case "Dashboard":
-        return <Dashboard />;
-      case "Products":
-        return <Products />;
-      case "EstimatedIncome":
-        return <EstimatedIncome />;
-      default:
-        return <Dashboard />;
-    }
+    return contentComponents[navigate] || <PointOfSalesMainJub />;
   }
+
   return (
     <div className="h-[90vh] w-full overflow-y-scroll scroll-smooth pr-8 will-change-scroll">
       {isLoading ? (
@@ -79,7 +79,45 @@ export default function Contentarea({ navigate }) {
           {renderContent()}
         </div>
       )}
-      {/* {renderContent()} */}
     </div>
   );
 }
+//   function renderContent() {
+//     switch (navigate) {
+//       case "SalesPoint":
+//         return <PointOfSalesMainJub />;
+//       case "Dashboard":
+//         return <Dashboard />;
+//       case "Products":
+//         return <Products />;
+//       case "EstimatedIncome":
+//         return <EstimatedIncome />;
+//       default:
+//         return <Dashboard />;
+//     }
+//   }
+//   return (
+//     <div className="h-[90vh] w-full overflow-y-scroll scroll-smooth pr-8 will-change-scroll">
+//       {isLoading ? (
+//         <div
+//           style={{
+//             opacity: preloaderOpacity,
+//             transition: "opacity 0.4s ease-out",
+//           }}
+//         >
+//           <BouncingCircles />
+//         </div>
+//       ) : (
+//         <div
+//           style={{
+//             opacity: contentOpacity,
+//             transition: "opacity 0.4s ease-in-out",
+//           }}
+//         >
+//           {renderContent()}
+//         </div>
+//       )}
+//       {/* {renderContent()} */}
+//     </div>
+//   );
+// }

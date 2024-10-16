@@ -4,18 +4,28 @@ import { MdOutlineAttachMoney } from "react-icons/md";
 import { FaPeopleGroup } from "react-icons/fa6";
 import { IoSettingsOutline } from "react-icons/io5";
 import { IoMdHelpCircleOutline } from "react-icons/io";
+import { HiMiniSquares2X2 } from "react-icons/hi2";
 
 import { useState } from "react";
 
 export default function Sidebar({ navigateTo }) {
   const [bgcolor, setbgcolor] = useState("text-prof-blue bg-[#E9EFFF]");
-  const [activeButton, setActiveButton] = useState("Dashboard");
+  const [activeButton, setActiveButton] = useState("SalesPoint");
 
   return (
     <div className="mr-8 flex h-[90vh] w-[4-vw] flex-col justify-between whitespace-nowrap border-r-2 border-gray-200 pt-4 drop-shadow-sm">
       <div className="pl-4 pr-4">
         <h2 className="mb-2 mt-4 opacity-60">General</h2>
         <ul className="w-full cursor-pointer space-y-2">
+          <li
+            onClick={() =>
+              navigateTo("SalesPoint") & setActiveButton("SalesPoint")
+            }
+            className={`${activeButton === "SalesPoint" ? bgcolor : ""} ${"flex rounded-lg p-4 py-2 pr-12 text-[0.9rem] font-medium transition duration-300 hover:bg-[#E9EFFF] hover:text-prof-blue"}`}
+          >
+            <HiMiniSquares2X2 className="mr-4 translate-y-1 scale-150" />
+            Sales Point
+          </li>
           <li
             onClick={() =>
               navigateTo("Dashboard") & setActiveButton("Dashboard")
