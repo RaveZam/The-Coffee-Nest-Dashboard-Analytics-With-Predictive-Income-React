@@ -108,7 +108,7 @@ export default function Dashboard() {
   }, [previousMonth]);
 
   return (
-    <div className="my-4">
+    <div className="my-4 mr-8">
       <div>
         <TotalSales
           lastMonthGross={lastMonthGross}

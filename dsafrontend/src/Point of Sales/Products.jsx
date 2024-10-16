@@ -1,7 +1,7 @@
 export function Products({ products }) {
   return (
     <>
-      <div className="grid h-screen w-full grid-cols-3 gap-8 overflow-y-scroll pb-[10rem] pr-8 will-change-scroll">
+      <div className="grid h-screen w-full grid-cols-3 gap-8 overflow-y-scroll pb-[15rem] pr-8 will-change-scroll">
         {products.map((product) => (
           <div
             key={product.id}
