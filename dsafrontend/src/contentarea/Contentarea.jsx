@@ -37,14 +37,24 @@ export default function Contentarea({ navigate }) {
   const { salesPerWeek } = useContext(GlobalDataContext);
 
   useEffect(() => {
-    setTimeout(() => {
-      setPreloaderOpacity(0);
-    }, 1000);
+    // Simulate data loading and handle transitions
+    const fetchData = async () => {
+      try {
+        // Simulate asynchronous data fetching, you can replace this with actual API calls
+        await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    setTimeout(() => {
-      setIsLoading(false);
-      setContentOpacity(1);
-    }, 2000);
+        // Transition for the preloader opacity
+        setPreloaderOpacity(0);
+        setTimeout(() => {
+          setIsLoading(false); // Set loading to false after data is "loaded"
+          setContentOpacity(1); // Fade in the content
+        }, 400); // Match the preloader's transition timing
+      } catch (error) {
+        console.error("Error fetching data", error);
+      }
+    };
+
+    fetchData(); // Call the fetch function when the component mounts
   }, []);
 
   const contentComponents = {
@@ -82,42 +92,3 @@ export default function Contentarea({ navigate }) {
     </div>
   );
 }
-//   function renderContent() {
-//     switch (navigate) {
-//       case "SalesPoint":
-//         return <PointOfSalesMainJub />;
-//       case "Dashboard":
-//         return <Dashboard />;
-//       case "Products":
-//         return <Products />;
-//       case "EstimatedIncome":
-//         return <EstimatedIncome />;
-//       default:
-//         return <Dashboard />;
-//     }
-//   }
-//   return (
-//     <div className="h-[90vh] w-full overflow-y-scroll scroll-smooth pr-8 will-change-scroll">
-//       {isLoading ? (
-//         <div
-//           style={{
-//             opacity: preloaderOpacity,
-//             transition: "opacity 0.4s ease-out",
-//           }}
-//         >
-//           <BouncingCircles />
-//         </div>
-//       ) : (
-//         <div
-//           style={{
-//             opacity: contentOpacity,
-//             transition: "opacity 0.4s ease-in-out",
-//           }}
-//         >
-//           {renderContent()}
-//         </div>
-//       )}
-//       {/* {renderContent()} */}
-//     </div>
-//   );
-// }
