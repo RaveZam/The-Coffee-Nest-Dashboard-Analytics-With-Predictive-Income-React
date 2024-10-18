@@ -4,9 +4,9 @@ import React from "react";
 export const Products = React.memo(({ products, cart, setCart }) => {
   const addToCart = (product) => {
     const isProductInCart = cart.find((item) => item.id === product.id);
+    const newStockValue = product.stocks - 1;
     if (isProductInCart) {
-      isProductInCart.quantity++;
-      console.log(isProductInCart.quantity);
+      alert("Item is Already in Cart");
     } else {
       setCart((prevcart) => [
         ...prevcart,
@@ -15,14 +15,12 @@ export const Products = React.memo(({ products, cart, setCart }) => {
           product_name: product.product_name,
           product_img_url: product.img_url,
           price: product.product_price,
+          stocks: product.stocks,
           quantity: 1,
+          newStocks: newStockValue,
         },
       ]);
     }
-    // const productInCart = cart.find((item) => item.id === product.id);
-    // if (productInCart) {
-    //   console.log("in Cart");
-    // }
   };
 
   return (
