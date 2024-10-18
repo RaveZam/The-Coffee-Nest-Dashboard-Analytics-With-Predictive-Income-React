@@ -1,4 +1,5 @@
 import { IoTrashOutline } from "react-icons/io5";
+import axios from "axios";
 
 export function Cart({ cart, setCart }) {
   const increaseQuantity = (id, stocks) => {
@@ -35,7 +36,19 @@ export function Cart({ cart, setCart }) {
       ),
     );
   };
-  function ProcessTransaction() {}
+
+  const handleCheckout = async (cart) => {
+    console.log("Cart data being sent:", cart); // Log cart data
+    try {
+      const response = await axios.post("http://localhost:8000/api/test", {
+        sales: cart,
+      });
+      console.log("Success", response);
+    } catch (error) {
+      console.error("There was an error", error.response.data);
+    }
+  };
+
   return (
     <div className="flex w-[35vw] flex-col text-left">
       <h1 className="pl-4 pt-8 text-[2vw] font-medium">Current Order</h1>
@@ -94,7 +107,13 @@ export function Cart({ cart, setCart }) {
         </div>
         <div>
           <button
-            onClick={() => ProcessTransaction()}
+            onClick={() => console.log(cart)}
+            className="whitespace-nowrap rounded-lg bg-prof-blue px-12 py-2 text-white"
+          >
+            Continue to Payment
+          </button>
+          <button
+            onClick={() => handleCheckout(cart)}
             className="whitespace-nowrap rounded-lg bg-prof-blue px-12 py-2 text-white"
           >
             Continue to Payment
@@ -104,12 +123,3 @@ export function Cart({ cart, setCart }) {
     </div>
   );
 }
-
-// {cart.length == 0 ? (
-//   <h1 className="text-gray-300">Cart Empty...</h1>
-// ) :  (
-// {cart.map} (    <div>
-//     <img className="h-12 w-12" src={item.product_img_url} alt="" />
-//     <h1>{item.product_name}</h1>
-//   </div>)
-// )}

@@ -10,7 +10,6 @@ export default function PointOfSalesMainJub() {
 
   return (
     <div className="flex h-[90vh]">
-      <button onClick={() => console.log(cart)}>Array</button>
       <div className="flex-col overflow-y-hidden">
         <Search />
         <Products setCart={setCart} cart={cart} products={products} />

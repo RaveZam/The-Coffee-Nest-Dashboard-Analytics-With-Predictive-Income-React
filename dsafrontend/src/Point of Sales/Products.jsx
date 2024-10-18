@@ -25,7 +25,7 @@ export const Products = React.memo(({ products, cart, setCart }) => {
 
   return (
     <div className="grid h-screen w-full grid-cols-3 gap-8 overflow-y-scroll pb-[17rem] pr-8 will-change-scroll">
-      {products.slice(0, 2).map((product) => (
+      {products.map((product) => (
         <div
           key={product.id}
           className="w-full flex-col rounded-lg border-2 border-gray-50 bg-white p-4 shadow-md will-change-scroll"
