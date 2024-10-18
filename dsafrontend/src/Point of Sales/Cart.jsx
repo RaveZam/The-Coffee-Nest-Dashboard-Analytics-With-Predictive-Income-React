@@ -1,5 +1,6 @@
 import { IoTrashOutline } from "react-icons/io5";
 import axios from "axios";
+import { useState, useEffect } from "react";
 
 export function Cart({ cart, setCart }) {
   const increaseQuantity = (id, stocks) => {
@@ -48,6 +49,14 @@ export function Cart({ cart, setCart }) {
       console.error("There was an error", error.response.data);
     }
   };
+  const [Total, setTotal] = useState(0);
+  let totalcounter = 0;
+  useEffect(() => {
+    cart.map((item) => {
+      totalcounter += parseInt(item.price) * item.quantity;
+    });
+    setTotal(totalcounter);
+  }, [cart]);
 
   return (
     <div className="flex w-[35vw] flex-col text-left">
@@ -103,15 +112,9 @@ export function Cart({ cart, setCart }) {
       <div className="mb-8 mt-auto flex w-5/6 flex-col items-center self-center">
         <div className="mb-4 flex w-full justify-between rounded-md bg-gray-100 p-4">
           <h1 className="text-[1.2vw]">Total:</h1>
-          <h1 className="text-[1.2vw]">$34</h1>
+          <h1 className="text-[1.2vw]">₱{Total}</h1>
         </div>
         <div>
-          <button
-            onClick={() => console.log(cart)}
-            className="whitespace-nowrap rounded-lg bg-prof-blue px-12 py-2 text-white"
-          >
-            Continue to Payment
-          </button>
           <button
             onClick={() => handleCheckout(cart)}
             className="whitespace-nowrap rounded-lg bg-prof-blue px-12 py-2 text-white"

@@ -37,6 +37,7 @@ export const Products = React.memo(({ products, cart, setCart }) => {
               loading="lazy"
             />
             <button
+              disabled={product.stocks > 0 ? false : true}
               onClick={() => addToCart(product)}
               className="absolute right-4 top-4 z-30"
             >
@@ -54,7 +55,9 @@ export const Products = React.memo(({ products, cart, setCart }) => {
             <h1 className="mt-4 text-[1.2vw] font-medium">
               ₱{product.product_price}
               <span className="ml-1 text-[0.9vw] text-gray-500">
-                Available: {product.stocks}
+                {product.stocks <= 0
+                  ? "Out of Stock"
+                  : "Available:" + `${product.stocks}`}
               </span>
             </h1>
           </div>
