@@ -1,8 +1,31 @@
 import { IoCartOutline } from "react-icons/io5";
 import React from "react";
 
-export const Products = React.memo(({ products, cart, setCart }) => (
-  <>
+export const Products = React.memo(({ products, cart, setCart }) => {
+  const addToCart = (product) => {
+    const isProductInCart = cart.find((item) => item.id === product.id);
+    if (isProductInCart) {
+      isProductInCart.quantity++;
+      console.log(isProductInCart.quantity);
+    } else {
+      setCart((prevcart) => [
+        ...prevcart,
+        {
+          id: product.id,
+          product_name: product.product_name,
+          product_img_url: product.img_url,
+          price: product.product_price,
+          quantity: 1,
+        },
+      ]);
+    }
+    // const productInCart = cart.find((item) => item.id === product.id);
+    // if (productInCart) {
+    //   console.log("in Cart");
+    // }
+  };
+
+  return (
     <div className="grid h-screen w-full grid-cols-3 gap-8 overflow-y-scroll pb-[17rem] pr-8 will-change-scroll">
       {products.slice(0, 2).map((product) => (
         <div
@@ -10,17 +33,13 @@ export const Products = React.memo(({ products, cart, setCart }) => (
           className="w-full flex-col rounded-lg border-2 border-gray-50 bg-white p-4 shadow-md will-change-scroll"
         >
           <div className="relative h-[13rem] w-full overflow-hidden rounded-2xl bg-red-300 bg-cover bg-center">
-            {/* <IoCartOutline className="translate-x-[13rem] translate-y-4 scale-150" /> */}
-
             <img
               className="z-10 h-full w-full object-cover object-center"
               src={product.img_url}
               loading="lazy"
             />
             <button
-              onClick={() =>
-                setCart((prevcart) => [{ ...prevcart, id: product.id }])
-              }
+              onClick={() => addToCart(product)}
               className="absolute right-4 top-4 z-30"
             >
               <div className="scale-125 rounded-md bg-gray-100 p-2 opacity-80">
@@ -44,5 +63,5 @@ export const Products = React.memo(({ products, cart, setCart }) => (
         </div>
       ))}
     </div>
-  </>
-));
+  );
+});

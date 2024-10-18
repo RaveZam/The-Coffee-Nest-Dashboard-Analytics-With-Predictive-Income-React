@@ -6,7 +6,7 @@ import { useState } from "react";
 
 export default function PointOfSalesMainJub() {
   const { products } = useFetchProducts();
-  const [cart, setCart] = useState([{ id: "" }]);
+  const [cart, setCart] = useState([]);
 
   return (
     <div className="flex h-[90vh]">
@@ -15,7 +15,7 @@ export default function PointOfSalesMainJub() {
         <Search />
         <Products setCart={setCart} cart={cart} products={products} />
       </div>
-      <Cart cart={cart} />
+      <Cart setCart={setCart} cart={cart} />
     </div>
   );
 }
