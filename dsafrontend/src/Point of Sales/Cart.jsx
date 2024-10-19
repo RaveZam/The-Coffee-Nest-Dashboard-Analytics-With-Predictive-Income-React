@@ -69,7 +69,7 @@ export function Cart({ cart, setCart }) {
             <div className="mb-4 mr-4 flex" key={item.product_name}>
               <div className="h-16 w-[5rem] overflow-hidden rounded-lg">
                 <img
-                  className="h-full w-[5rem] object-cover object-center"
+                  className="h-full w-[4rem] object-cover object-center"
                   src={item.product_img_url}
                 />
               </div>
@@ -116,6 +116,7 @@ export function Cart({ cart, setCart }) {
         </div>
         <div>
           <button
+            disabled={cart.length <= 0 ? true : false}
             onClick={() => handleCheckout(cart)}
             className="whitespace-nowrap rounded-lg bg-prof-blue px-12 py-2 text-white"
           >

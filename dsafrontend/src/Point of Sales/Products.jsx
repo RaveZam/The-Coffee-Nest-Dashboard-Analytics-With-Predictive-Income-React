@@ -30,7 +30,7 @@ export const Products = React.memo(({ products, cart, setCart }) => {
           key={product.id}
           className="w-full flex-col rounded-lg border-2 border-gray-50 bg-white p-4 shadow-md will-change-scroll"
         >
-          <div className="relative h-[13rem] w-full overflow-hidden rounded-2xl bg-red-300 bg-cover bg-center">
+          <div className="relative h-[13rem] w-full overflow-hidden rounded-2xl bg-cover bg-center">
             <img
               className="z-10 h-full w-full object-cover object-center"
               src={product.img_url}

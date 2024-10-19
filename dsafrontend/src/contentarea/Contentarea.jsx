@@ -4,6 +4,7 @@ import Products from "../products/Products";
 import BouncingCircles from "../preloaders/BouncingCircles";
 import EstimatedIncome from "../Estimated Income/EstimatedIncome";
 import PointOfSalesMainJub from "../Point of Sales/PointofSalesMainHub";
+import { useFetchProducts } from "../customHooks/useFetchProducts";
 
 export const GlobalDataContext = createContext();
 
@@ -31,6 +32,7 @@ export const GlobalDataProvider = ({ children }) => {
 };
 
 export default function Contentarea({ navigate }) {
+  const { products } = useFetchProducts();
   const [isLoading, setIsLoading] = useState(true);
   const [preloaderOpacity, setPreloaderOpacity] = useState(1);
   const [contentOpacity, setContentOpacity] = useState(0);
@@ -58,14 +60,16 @@ export default function Contentarea({ navigate }) {
   }, []);
 
   const contentComponents = {
-    SalesPoint: <PointOfSalesMainJub />,
+    SalesPoint: <PointOfSalesMainJub products={products} />,
     Dashboard: <Dashboard />,
-    Products: <Products />,
+    Products: <Products products={products} />,
     EstimatedIncome: <EstimatedIncome />,
   };
 
   function renderContent() {
-    return contentComponents[navigate] || <PointOfSalesMainJub />;
+    return (
+      contentComponents[navigate] || <PointOfSalesMainJub products={products} />
+    );
   }
 
   return (

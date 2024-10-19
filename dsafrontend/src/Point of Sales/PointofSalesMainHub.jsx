@@ -1,11 +1,9 @@
-import { useFetchProducts } from "../customHooks/useFetchProducts";
 import { Products } from "./Products";
 import { Search } from "./Search";
 import { Cart } from "./Cart";
 import { useState } from "react";
 
-export default function PointOfSalesMainJub() {
-  const { products } = useFetchProducts();
+export default function PointOfSalesMainJub({ products }) {
   const [cart, setCart] = useState([]);
 
   return (
