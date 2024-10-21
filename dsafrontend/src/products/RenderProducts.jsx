@@ -1,4 +1,10 @@
-export default function RenderProducts({ products }) {
+export default function RenderProducts({
+  products,
+  showPopup,
+  PopUp,
+  ProductToEdit,
+  setProductToEdit,
+}) {
   return (
     <div className="mr-4 flex flex-grow rounded-md border-2 border-gray-200">
       <div className="flex flex-grow flex-col">
@@ -6,15 +12,15 @@ export default function RenderProducts({ products }) {
           Item Name
         </h1>
         {products.slice(0, 2).map((item) => (
-          <div className="flex items-center border-b-2 border-gray-200 pl-4">
+          <div
+            key={item.product_id}
+            className="flex items-center border-b-2 border-gray-200 pl-4"
+          >
             <img
               src={item.img_url}
               class="mr-1 h-8 w-8 rounded-md object-cover"
             />
-            <h1
-              key={item.product_id}
-              className="flex whitespace-nowrap py-4 text-[1vw]"
-            >
+            <h1 className="flex whitespace-nowrap py-4 text-[1vw]">
               {item.product_name}
             </h1>
           </div>
@@ -75,7 +81,23 @@ export default function RenderProducts({ products }) {
             className="flex border-b-2 border-gray-200 py-2"
             key={[product.id]}
           >
-            <button className="rounded-md bg-prof-blue px-8 py-2 text-[1vw] text-white">
+            <button
+              onClick={() => {
+                showPopup(!PopUp);
+                setProductToEdit([
+                  {
+                    id: product.id,
+                    name: product.product_name,
+                    desc: product.desc,
+                    price: product.product_price,
+                    stocks: product.stocks,
+                    category: product.category,
+                    image: product.img_url,
+                  },
+                ]);
+              }}
+              className="rounded-full bg-prof-blue px-8 py-2 text-[1vw] text-white"
+            >
               Edit
             </button>
           </div>
