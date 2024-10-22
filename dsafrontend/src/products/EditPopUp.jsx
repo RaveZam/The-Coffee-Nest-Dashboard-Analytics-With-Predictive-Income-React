@@ -9,13 +9,12 @@ export default function EditPopUp({
   setProductToEdit,
 }) {
   const [showSuccess, setshowSuccess] = useState(false);
-  const updatedProduct = ProductToEdit[0];
 
   const handleDelete = async () => {
+    const id = ProductToEdit[0].id;
     try {
       const response = await axios.delete(
-        "http://localhost:8000/api/products/delete",
-        updatedProduct,
+        `http://localhost:8000/api/products/delete/${id}`,
       );
       if (response.status == 201) {
         setshowSuccess(true);
@@ -27,10 +26,17 @@ export default function EditPopUp({
   };
 
   const handleSubmit = async () => {
+    const updatedProduct = ProductToEdit[0];
+
     try {
-      const response = await axios.put(
+      const response = await axios.post(
         "http://localhost:8000/api/products/update",
         updatedProduct,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        },
       );
 
       if (response.status == 201) {
@@ -141,10 +147,29 @@ export default function EditPopUp({
               className="mt-4 file:mr-4 file:cursor-pointer file:rounded-3xl file:border-none file:bg-blue-600 file:px-4 file:py-2 file:text-white"
               type="file"
               required
+              onChange={(e) => {
+                const file = e.target.files[0];
+                setProductToEdit((prevProduct) => [
+                  {
+                    ...prevProduct[0],
+                    image: file,
+                  },
+                ]);
+              }}
+              // onChange={(e) => {
+              //   const file = e.target.files[0];
+              //   setProductToEdit((prev) => ({
+              //     ...prev[0],
+              //     image: file,
+              //   }));
+              // }}
             />
-            <label className="mt-4 whitespace-nowrap">
-              Current Image: {ProductToEdit[0].image.split("/").pop()}
-            </label>
+            {/* <label className="mt-4 whitespace-nowrap">
+              Current Image:
+              {ProductToEdit[0].image
+                ? ""
+                : ProductToEdit[0].image.split("/").pop()}
+            </label> */}
           </div>
         </form>
         <div className="flex gap-4">
@@ -155,7 +180,8 @@ export default function EditPopUp({
             Submit
           </button>
           <button
-            onClick={handleDelete}
+            // onClick={handleDelete}
+            onClick={() => console.log(ProductToEdit)}
             className="mt-4 w-1/2 rounded-3xl border-2 border-black bg-white px-8 py-2"
           >
             Delete Product

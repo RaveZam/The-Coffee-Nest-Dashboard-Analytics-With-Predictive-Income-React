@@ -5,7 +5,7 @@ import { useState } from "react";
 
 export default function Products({ products }) {
   const [PopUp, showPopup] = useState(false);
-  const [ProductToEdit, setProductToEdit] = useState();
+  const [ProductToEdit, setProductToEdit] = useState({});
   const [Addproduct, showAddproduct] = useState(false);
 
   return (

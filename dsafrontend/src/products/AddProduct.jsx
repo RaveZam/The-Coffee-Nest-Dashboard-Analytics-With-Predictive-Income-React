@@ -112,10 +112,9 @@ export default function AddProduct({ showAddproduct }) {
             type="file"
             required
             onChange={(e) => {
-              const file = e.target.files[0];
               setNewProduct((prev) => ({
                 ...prev,
-                image: file,
+                image: e.target.files[0],
               }));
             }}
           />
