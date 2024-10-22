@@ -91,6 +91,7 @@ export default function PredictiveIncome({
           {NextMonthGross - grosssales < 0
             ? `-₱${Math.abs(NextMonthGross - grosssales).toFixed(2)}`
             : `+₱${(NextMonthGross - grosssales).toFixed(2)}`}
+          {}
         </span>
         <span className="py-1 text-[0.9vw] font-medium text-gray-500">
           Compared to Last Month

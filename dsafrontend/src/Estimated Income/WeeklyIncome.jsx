@@ -43,9 +43,9 @@ export default function WeeklyIncome({
                   +₱{Math.abs(salesPerWeek[0] - lastMonthSalesPerWeek[3])}
                 </span>
               )}
-            </span>
-            <span className="py-1 text-[0.9vw] font-medium text-gray-500">
-              from last week
+              <span className="ml-1 py-1 text-[0.9vw] font-medium text-gray-500">
+                from last week
+              </span>
             </span>
           </div>
         </div>
@@ -66,13 +66,28 @@ export default function WeeklyIncome({
             </div>
           </div>
           <div className="flex">
-            <span className="py-1 pl-2 pr-1 text-[0.9vw] font-semibold">
+            {/* <span className="py-1 pl-2 pr-1 text-[0.9vw] font-semibold">
               {salesPerWeek[1] - salesPerWeek[0] < 0
                 ? `-₱${Math.abs(salesPerWeek[0] - salesPerWeek[0])}`
                 : `+₱${salesPerWeek[1] - salesPerWeek[0]}`}
-            </span>
-            <span className="py-1 text-[0.9vw] font-medium text-gray-500">
-              from last week
+            </span> */}
+            <span className="animate-appearFromTop py-1 pl-2 pr-1 text-[0.9vw] font-semibold">
+              {isNaN(salesPerWeek[1]) || salesPerWeek[0] === 0 ? (
+                <div className="mr-2 mt-1 scale-90">
+                  <SmallLoading />
+                </div>
+              ) : salesPerWeek[1] - salesPerWeek[0] < 0 ? (
+                <span className="animate-appearFromTop">
+                  -₱{Math.abs(salesPerWeek[1] - salesPerWeek[0])}
+                </span>
+              ) : (
+                <span className="animate-appearFromTop">
+                  +₱{Math.abs(salesPerWeek[1] - salesPerWeek[0])}
+                </span>
+              )}
+              <span className="ml-1 py-1 text-[0.9vw] font-medium text-gray-500">
+                from last week
+              </span>
             </span>
           </div>
         </div>
@@ -94,13 +109,31 @@ export default function WeeklyIncome({
             </div>
           </div>
           <div className="flex">
-            <span className="py-1 pl-2 pr-1 text-[0.9vw] font-semibold">
+            {/* <span className="py-1 pl-2 pr-1 text-[0.9vw] font-semibold">
               {salesPerWeek[2] - salesPerWeek[1] < 0
                 ? `-₱${Math.abs(salesPerWeek[2] - salesPerWeek[1])}`
                 : `+₱${salesPerWeek[2] - salesPerWeek[1]}`}
             </span>
             <span className="py-1 text-[0.9vw] font-medium text-gray-500">
               from last week
+            </span> */}
+            <span className="animate-appearFromTop py-1 pl-2 pr-1 text-[0.9vw] font-semibold">
+              {isNaN(salesPerWeek[2]) || salesPerWeek[1] === 0 ? (
+                <div className="mr-2 mt-1 scale-90">
+                  <SmallLoading />
+                </div>
+              ) : salesPerWeek[2] - salesPerWeek[1] < 0 ? (
+                <span className="animate-appearFromTop">
+                  -₱{Math.abs(salesPerWeek[2] - salesPerWeek[1])}
+                </span>
+              ) : (
+                <span className="animate-appearFromTop">
+                  +₱{Math.abs(salesPerWeek[2] - salesPerWeek[1])}
+                </span>
+              )}
+              <span className="ml-1 py-1 text-[0.9vw] font-medium text-gray-500">
+                from last week
+              </span>
             </span>
           </div>
         </div>
@@ -122,13 +155,31 @@ export default function WeeklyIncome({
             </div>
           </div>
           <div className="flex">
-            <span className="py-1 pl-2 pr-1 text-[0.9vw] font-semibold">
+            {/* <span className="py-1 pl-2 pr-1 text-[0.9vw] font-semibold">
               {salesPerWeek[3] - salesPerWeek[2] < 0
                 ? `-₱${Math.abs(salesPerWeek[3] - salesPerWeek[2])}`
                 : `+₱${salesPerWeek[3] - salesPerWeek[2]}`}
             </span>
             <span className="py-1 text-[0.9vw] font-medium text-gray-500">
               from last week
+            </span> */}
+            <span className="animate-appearFromTop py-1 pl-2 pr-1 text-[0.9vw] font-semibold">
+              {isNaN(salesPerWeek[3]) || salesPerWeek[2] === 0 ? (
+                <div className="mr-2 mt-1 scale-90">
+                  <SmallLoading />
+                </div>
+              ) : salesPerWeek[3] - salesPerWeek[2] < 0 ? (
+                <span className="animate-appearFromTop">
+                  -₱{Math.abs(salesPerWeek[3] - salesPerWeek[2])}
+                </span>
+              ) : (
+                <span className="animate-appearFromTop">
+                  +₱{Math.abs(salesPerWeek[3] - salesPerWeek[2])}
+                </span>
+              )}
+              <span className="ml-1 py-1 text-[0.9vw] font-medium text-gray-500">
+                from last week
+              </span>
             </span>
           </div>
         </div>

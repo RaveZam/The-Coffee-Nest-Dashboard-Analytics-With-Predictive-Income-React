@@ -11,7 +11,7 @@ export default function RenderProducts({
         <h1 className="border-b-2 border-gray-200 py-4 pl-4 text-[1vw]">
           Item Name
         </h1>
-        {products.slice(0, 2).map((item) => (
+        {products.map((item) => (
           <div
             key={item.product_id}
             className="flex items-center border-b-2 border-gray-200 pl-4"
@@ -30,7 +30,7 @@ export default function RenderProducts({
         <h1 className="border-b-2 border-gray-200 py-4 text-[1vw]">
           Description
         </h1>
-        {products.slice(0, 2).map((item) => (
+        {products.map((item) => (
           <span
             key={item.product_id}
             className="whitespace-nowrap border-b-2 border-gray-200 py-4 text-[1vw]"
@@ -41,7 +41,7 @@ export default function RenderProducts({
       </div>
       <div className="flex flex-grow flex-col">
         <h1 className="border-b-2 border-gray-200 py-4 text-[1vw]">Price</h1>
-        {products.slice(0, 2).map((item) => (
+        {products.map((item) => (
           <span
             key={item.product_id}
             className="border-b-2 border-gray-200 py-4 text-[1vw]"
@@ -52,7 +52,7 @@ export default function RenderProducts({
       </div>
       <div className="flex flex-grow flex-col">
         <h1 className="border-b-2 border-gray-200 py-4 text-[1vw]">Stocks</h1>
-        {products.slice(0, 2).map((item) => (
+        {products.map((item) => (
           <span
             key={item.product_id}
             className="border-b-2 border-gray-200 py-4 text-[1vw]"
@@ -63,7 +63,7 @@ export default function RenderProducts({
       </div>
       <div className="flex flex-grow flex-col">
         <h1 className="border-b-2 border-gray-200 py-4 text-[1vw]">Category</h1>
-        {products.slice(0, 2).map((item) => (
+        {products.map((item) => (
           <span
             key={item.product_id}
             className="whitespace-nowrap border-b-2 border-gray-200 py-4 text-[1vw]"
@@ -76,7 +76,7 @@ export default function RenderProducts({
         <h1 className="whitespace-nowrap border-b-2 border-gray-200 py-4 text-[1vw]">
           Edit Product
         </h1>
-        {products.slice(0, 2).map((product) => (
+        {products.map((product) => (
           <div
             className="flex border-b-2 border-gray-200 py-2"
             key={[product.id]}

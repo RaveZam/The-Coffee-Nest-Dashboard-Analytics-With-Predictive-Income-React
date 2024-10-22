@@ -1,22 +1,41 @@
 import { IoMdClose } from "react-icons/io";
+import SuccessPopUp from "../components/SuccessPopUp";
 import axios from "axios";
+import { useState } from "react";
 
 export default function EditPopUp({
   showPopup,
   ProductToEdit,
   setProductToEdit,
 }) {
-  const handleSubmit = async () => {
-    const updatedProduct = ProductToEdit[0];
+  const [showSuccess, setshowSuccess] = useState(false);
+  const updatedProduct = ProductToEdit[0];
 
+  const handleDelete = async () => {
+    try {
+      const response = await axios.delete(
+        "http://localhost:8000/api/products/delete",
+        updatedProduct,
+      );
+      if (response.status == 201) {
+        setshowSuccess(true);
+        console.log("Success");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  const handleSubmit = async () => {
     try {
       const response = await axios.put(
         "http://localhost:8000/api/products/update",
         updatedProduct,
       );
 
-      if (response.status === 200) {
-        console.log("Product updated successfully", response.data);
+      if (response.status == 201) {
+        setshowSuccess(true);
+        console.log("Success");
       } else {
         console.error("Failed to update product", response.statusText);
       }
@@ -27,6 +46,7 @@ export default function EditPopUp({
 
   return (
     <>
+      {showSuccess && <SuccessPopUp setshowSuccess={setshowSuccess} />}
       <div className="absolute inset-0 h-screen w-screen bg-black opacity-50"></div>
       <div className="absolute left-1/2 top-1/2 flex w-3/6 -translate-x-1/2 -translate-y-1/2 transform flex-col rounded-2xl border-2 border-gray-200 bg-gray-50 p-4">
         <h1 className="flex text-[1.5vw] font-medium">
@@ -116,23 +136,31 @@ export default function EditPopUp({
             <option value="option3">Milk Shake</option>
             <option value="option3">Pastry</option>
           </select>
-          <div className="flex">
+          <div className="mt-4 flex">
             <input
               className="mt-4 file:mr-4 file:cursor-pointer file:rounded-3xl file:border-none file:bg-blue-600 file:px-4 file:py-2 file:text-white"
               type="file"
               required
             />
-            <label>
+            <label className="mt-4 whitespace-nowrap">
               Current Image: {ProductToEdit[0].image.split("/").pop()}
             </label>
           </div>
         </form>
-        <button
-          onClick={handleSubmit}
-          className="mt-4 rounded-3xl bg-blue-600 px-8 py-2 text-white"
-        >
-          Submit
-        </button>
+        <div className="flex gap-4">
+          <button
+            onClick={handleSubmit}
+            className="mt-4 w-1/2 rounded-3xl bg-blue-600 px-8 py-2 text-white"
+          >
+            Submit
+          </button>
+          <button
+            onClick={handleDelete}
+            className="mt-4 w-1/2 rounded-3xl border-2 border-black bg-white px-8 py-2"
+          >
+            Delete Product
+          </button>
+        </div>
       </div>
     </>
   );

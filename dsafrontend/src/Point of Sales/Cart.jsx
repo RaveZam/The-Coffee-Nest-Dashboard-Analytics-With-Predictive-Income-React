@@ -1,6 +1,8 @@
 import { IoTrashOutline } from "react-icons/io5";
+
 import axios from "axios";
 import { useState, useEffect } from "react";
+import SuccessPopUp from "../components/SuccessPopUp";
 
 export function Cart({ cart, setCart }) {
   const increaseQuantity = (id, stocks) => {
@@ -37,14 +39,17 @@ export function Cart({ cart, setCart }) {
       ),
     );
   };
-
+  const [showSuccess, setshowSuccess] = useState(false);
   const handleCheckout = async (cart) => {
     console.log("Cart data being sent:", cart); // Log cart data
     try {
-      const response = await axios.post("http://localhost:8000/api/test", {
+      const response = await axios.post("http://localhost:8000/api/salesAdd", {
         sales: cart,
       });
-      console.log("Success", response);
+
+      if (response.status == 201) {
+        setshowSuccess(true);
+      }
     } catch (error) {
       console.error("There was an error", error.response.data);
     }
@@ -60,6 +65,7 @@ export function Cart({ cart, setCart }) {
 
   return (
     <div className="flex w-[35vw] flex-col text-left">
+      {showSuccess && <SuccessPopUp setshowSuccess={setshowSuccess} />}
       <h1 className="pl-4 pt-8 text-[2vw] font-medium">Current Order</h1>
       <div className="h-4/6 w-5/6 self-center rounded-md">
         {cart.length == 0 ? (
