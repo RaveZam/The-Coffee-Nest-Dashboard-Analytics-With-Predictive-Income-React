@@ -41,7 +41,7 @@ export function Cart({ cart, setCart }) {
   };
   const [showSuccess, setshowSuccess] = useState(false);
   const handleCheckout = async (cart) => {
-    console.log("Cart data being sent:", cart); // Log cart data
+    console.log("Cart data being sent:", cart);
     try {
       const response = await axios.post("http://localhost:8000/api/salesAdd", {
         sales: cart,

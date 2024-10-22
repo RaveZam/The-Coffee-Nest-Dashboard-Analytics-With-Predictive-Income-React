@@ -22,6 +22,9 @@ export default function PieChartComponent() {
         console.log(error);
       });
   }, []);
+  useEffect(() => {
+    console.log(sortedCategory);
+  });
 
   const CustomBarShape = (props) => {
     const { fill, x, y, width, height } = props;
