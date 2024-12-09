@@ -3,13 +3,17 @@ import axios from "axios";
 
 export const useFetchProducts = () => {
   const [products, setProducts] = useState([]);
+  const [productsLoading, setHasProductsLoading] = useState(true);
 
   useEffect(() => {
+    console.log("Fetching Products Triggered");
     const fetchProducts = async () => {
       try {
         const response = await axios.get("http://localhost:8000/api/products");
         if (response && response.data) {
           setProducts(response.data);
+          setHasProductsLoading(false);
+          // console.log("Product Loaded Set to True");
         }
       } catch (error) {
         console.log(error);
@@ -19,7 +23,7 @@ export const useFetchProducts = () => {
     fetchProducts();
   }, []);
 
-  return { products };
+  return { products, productsLoading };
 };
 
 // my Bad Codes Below ======= Better Code Above!

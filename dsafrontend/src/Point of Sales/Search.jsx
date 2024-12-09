@@ -1,7 +1,7 @@
 import { CiSearch } from "react-icons/ci";
 import { PiCoffeeBeanFill } from "react-icons/pi";
 
-export function Search() {
+export function Search({ setSearch, search }) {
   return (
     <div className="py-8">
       <div className="flex w-1/3 rounded-lg border-2 border-gray-300 px-4 py-2">
@@ -10,6 +10,8 @@ export function Search() {
           className="text-[0.8rem] focus:border-none focus:outline-none"
           type="text"
           placeholder=" Search Product"
+          onChange={(e) => setSearch(e.target.value)}
+          value={search}
         />
       </div>
       <div className="mt-4 flex gap-4">

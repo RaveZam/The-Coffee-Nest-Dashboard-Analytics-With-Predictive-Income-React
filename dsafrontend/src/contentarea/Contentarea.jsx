@@ -32,25 +32,28 @@ export const GlobalDataProvider = ({ children }) => {
 };
 
 export default function Contentarea({ navigate }) {
-  const { products } = useFetchProducts();
+  const { products, productsLoading } = useFetchProducts();
   const [isLoading, setIsLoading] = useState(true);
   const [preloaderOpacity, setPreloaderOpacity] = useState(1);
   const [contentOpacity, setContentOpacity] = useState(0);
   const { salesPerWeek } = useContext(GlobalDataContext);
 
   useEffect(() => {
-    // Simulate data loading and handle transitions
     const fetchData = async () => {
       try {
-        // Simulate asynchronous data fetching, you can replace this with actual API calls
         await new Promise((resolve) => setTimeout(resolve, 1000));
-
-        // Transition for the preloader opacity
         setPreloaderOpacity(0);
+        if (productsLoading) {
+        } else {
+          setTimeout(() => {
+            setIsLoading(false);
+            setContentOpacity(1);
+          }, 400);
+        }
         setTimeout(() => {
-          setIsLoading(false); // Set loading to false after data is "loaded"
-          setContentOpacity(1); // Fade in the content
-        }, 400); // Match the preloader's transition timing
+          setIsLoading(false);
+          setContentOpacity(1);
+        }, 400);
       } catch (error) {
         console.error("Error fetching data", error);
       }
@@ -71,6 +74,7 @@ export default function Contentarea({ navigate }) {
       contentComponents[navigate] || <PointOfSalesMainJub products={products} />
     );
   }
+  console.log("isLoading:", isLoading, "productsLoading:", productsLoading);
 
   return (
     <div className="h-[90vh] w-full overflow-y-scroll scroll-smooth will-change-scroll">

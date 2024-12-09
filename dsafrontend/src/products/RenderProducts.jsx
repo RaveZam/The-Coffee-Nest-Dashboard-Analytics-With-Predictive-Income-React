@@ -20,9 +20,19 @@ export default function RenderProducts({
               src={item.img_url}
               class="mr-1 h-8 w-8 rounded-md object-cover"
             />
-            <h1 className="flex whitespace-nowrap py-4 text-[1vw]">
-              {item.product_name}
-            </h1>
+            {/* <div className="text-red-600"> */}
+            <div className={item.stocks < 10 ? "text-red-600" : ""}>
+              <div className="flex">
+                <h1 className="flex whitespace-nowrap py-4 text-[1vw]">
+                  {item.product_name}
+                </h1>
+                <div className={item.stocks < 10 ? "" : "opacity-0"}>
+                  <span className="ml-4 mt-5 flex text-[0.6vw]">
+                    Low in Stock Please Attend
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         ))}
       </div>
@@ -33,7 +43,7 @@ export default function RenderProducts({
         {products.map((item) => (
           <span
             key={item.product_id}
-            className="whitespace-nowrap border-b-2 border-gray-200 py-4 text-[1vw]"
+            className="ml-[-20px] whitespace-nowrap border-b-2 border-gray-200 py-4 text-[1vw]"
           >
             {item.desc}
           </span>

@@ -64,10 +64,10 @@ export function Cart({ cart, setCart }) {
   }, [cart]);
 
   return (
-    <div className="flex w-[35vw] flex-col text-left">
+    <div className="flex h-[90vh] flex-col justify-between text-left">
       {showSuccess && <SuccessPopUp setshowSuccess={setshowSuccess} />}
       <h1 className="pl-4 pt-8 text-[2vw] font-medium">Current Order</h1>
-      <div className="h-4/6 w-5/6 self-center rounded-md">
+      <div className="ml-4 flex h-4/6 w-5/6 flex-col self-center overflow-y-scroll rounded-md">
         {cart.length == 0 ? (
           <h1 className="text-gray-300">Cart Empty...</h1>
         ) : (
