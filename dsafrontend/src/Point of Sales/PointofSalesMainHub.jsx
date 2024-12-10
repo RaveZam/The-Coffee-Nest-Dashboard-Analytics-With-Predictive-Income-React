@@ -6,12 +6,18 @@ import { useState } from "react";
 export default function PointOfSalesMainJub({ products }) {
   const [cart, setCart] = useState([]);
   const [search, setSearch] = useState("");
-
+  const [categoryChosen, setCategoryChosen] = useState("");
   return (
     <div className="flex h-[90vh]">
       <div className="w-[70%] overflow-y-hidden">
-        <Search search={search} setSearch={setSearch} />
+        <Search
+          categoryChosen={categoryChosen}
+          setCategoryChosen={setCategoryChosen}
+          search={search}
+          setSearch={setSearch}
+        />
         <Products
+          categoryChosen={categoryChosen}
           search={search}
           setCart={setCart}
           cart={cart}
