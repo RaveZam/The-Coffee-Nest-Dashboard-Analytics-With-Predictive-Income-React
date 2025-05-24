@@ -39,17 +39,4 @@ Also Added A POS System just to add data with ease for experiments
 
 ---
 
-## 🚀 Getting Started
 
-```bash
-# Clone the repository
-git clone https://github.com/your-username/coffee-nest.git
-
-# Navigate into the project folder
-cd coffee-nest
-
-# Install dependencies
-npm install
-
-# Start the development server
-npm start
