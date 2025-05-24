@@ -1,4 +1,4 @@
-# Coffee Nest ☕📊
+The Coffee Nest
 
 Coffee Nest is a data science analytics dashboard built with ReactJS and Chart.js, designed to provide insightful visualizations and trends for coffee shop sales performance. It helps track product performance, predict future sales, and understand customer preferences through clear, interactive charts.
 
